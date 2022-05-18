@@ -11,7 +11,7 @@ rua = pygame.image.load('assets/Images/rua2.png').convert()
 rua = pygame.transform.scale(rua, (570, 870))
 
 carro = pygame.image.load('assets/Images/carro vermelho.png')
-carro = pygame.transform.scale(carro, (80,120))
+carro = pygame.transform.scale(carro, (100,120))
 while jogo:
 
     for event in pygame.event.get():
@@ -20,7 +20,7 @@ while jogo:
 
     window.fill((255, 255, 255))
     window.blit(rua, (0, 0))
-    window.blit(carro, (250, 450))
+    window.blit(carro, (235, 450))
     pygame.display.update() 
 
 pygame.quit()  
