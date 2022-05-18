@@ -16,7 +16,7 @@ carro = pygame.transform.scale(carro, (120,150))
 carro2 = pygame.image.load('assets/Images/picape2_rotacionada.png')
 carro2 = pygame.transform.scale(carro2, (140,160))
 
-taxi= pygame.image.load('assets/Images/taxi.png')
+taxi = pygame.image.load('assets/Images/taxi_rotacionado.png')
 taxi = pygame.transform.scale(taxi, (120,150))
 while jogo:
 
@@ -28,7 +28,7 @@ while jogo:
     window.blit(rua, (0, 0))
     window.blit(carro, (225, 450))
     window.blit(carro2, (40, 0))
-    window.blit(taxi, (175, 200))
+    window.blit(taxi, (190, 200))
     pygame.display.update() 
 
 pygame.quit()  
