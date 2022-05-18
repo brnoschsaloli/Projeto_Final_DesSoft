@@ -10,7 +10,7 @@ jogo = True
 rua = pygame.image.load('assets/Images/rua2.png').convert()
 rua = pygame.transform.scale(rua, (570, 870))
 
-carro = pygame.image.load('assets/Images/carro vermelho.jpg')
+carro = pygame.image.load('assets/Images/carro vermelho.png')
 carro = pygame.transform.scale(carro, (80,120))
 while jogo:
 
