@@ -7,9 +7,11 @@ pygame.display.set_caption('Rápidos e muito bravos')
 
 jogo = True
 
-image = pygame.image.load('assets/Images/rua2.png').convert()
-image = pygame.transform.scale(image, (570, 870))
+rua = pygame.image.load('assets/Images/rua2.png').convert()
+rua = pygame.transform.scale(rua, (570, 870))
 
+carro = pygame.image.load('assets/Images/carro vermelho.jpg')
+carro = pygame.transform.scale(carro, (80,120))
 while jogo:
 
     for event in pygame.event.get():
@@ -17,7 +19,8 @@ while jogo:
             jogo = False
 
     window.fill((255, 255, 255))
-    window.blit(image, (0, 0))
+    window.blit(rua, (0, 0))
+    window.blit(carro, (250, 450))
     pygame.display.update() 
 
 pygame.quit()  
