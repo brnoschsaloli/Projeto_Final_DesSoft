@@ -51,21 +51,22 @@ while jogo:
     clock.tick(FPS)
 
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            jogo = False
         if event.type == pygame.KEYDOWN:
             # Dependendo da tecla, altera a velocidade.
             if event.key == pygame.K_LEFT:
-                carro.speedx -= 4
+                jogadô.speedx -= 4
             if event.key == pygame.K_RIGHT:
-                carro.speedx += 4
+                jogadô.speedx += 4
         # Verifica se soltou alguma tecla.
         if event.type == pygame.KEYUP:
             # Dependendo da tecla, altera a velocidade.
             if event.key == pygame.K_LEFT:
-                carro.speedx += 4
+                jogadô.speedx += 4
             if event.key == pygame.K_RIGHT:
-                carro.speedx -= 4
+                jogadô.speedx -= 4
+                
+        if event.type == pygame.QUIT:
+            jogo = False
 
     window.fill((255, 255, 255))
     window.blit(rua, (0, 0))
