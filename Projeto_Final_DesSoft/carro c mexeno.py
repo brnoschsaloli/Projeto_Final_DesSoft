@@ -20,6 +20,14 @@ jogo = True
 rua_img = pygame.image.load('assets/Images/rua2.png').convert()
 rua_img = pygame.transform.scale(rua_img, (570, 870))
 
+rua2_img = pygame.image.load('assets/Images/rua2.png').convert()
+rua2_img = pygame.transform.scale(rua2_img, (570, 870))
+
+rua3_img = pygame.image.load('assets/Images/rua2.png').convert()
+rua3_img = pygame.transform.scale(rua3_img, (570, 870))
+
+ruas = [rua_img, rua2_img, rua3_img]
+
 carro_img = pygame.image.load('assets/Images/carro mustang.png')
 carro_img = pygame.transform.scale(carro_img, (LARGURA_CARRO,ALTURA_CARRO))
 
