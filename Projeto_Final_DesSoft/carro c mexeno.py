@@ -83,7 +83,7 @@ class Taxi(pygame.sprite.Sprite):
         self.image = img
         self.rect = self.image.get_rect()
         self.rect.x = (190)
-        self.rect.y = (-100)
+        self.rect.y = (-130)
         self.speedx = (0)
         self.speedy = (5)
 
@@ -95,7 +95,7 @@ class Taxi(pygame.sprite.Sprite):
         # novas posições e velocidades
         if self.rect.top > ALTURA:
             self.rect.x = (190)
-            self.rect.y = (-100)
+            self.rect.y = (-130)
             self.speedx = (0)
             self.speedy = (5)
 class Carro_verde(pygame.sprite.Sprite):
