@@ -7,8 +7,8 @@ LARGURA_CARRO = 120
 ALTURA_CARRO = 150
 LARGURA_PICAPE = 140
 ALTURA_PICAPE = 160
-LARGURA_TAXI = 150
-ALTURA_TAXI = 120
+LARGURA_TAXI = 120
+ALTURA_TAXI = 160
 
 
 window = pygame.display.set_mode((LARGURA, ALTURA))
@@ -56,7 +56,7 @@ class Picape(pygame.sprite.Sprite):
         self.image = img
         self.rect = self.image.get_rect()
         self.rect.x = (40)
-        self.rect.y = (-100)
+        self.rect.y = (-200)
         self.speedx = (0)
         self.speedy = (5)
 
@@ -68,7 +68,7 @@ class Picape(pygame.sprite.Sprite):
         # novas posições e velocidades
         if self.rect.top > ALTURA:
             self.rect.x = (40)
-            self.rect.y = (-100)
+            self.rect.y = (-200)
             self.speedx = (0)
             self.speedy = (5)
 class Taxi(pygame.sprite.Sprite):
@@ -79,7 +79,7 @@ class Taxi(pygame.sprite.Sprite):
         self.image = img
         self.rect = self.image.get_rect()
         self.rect.x = (190)
-        self.rect.y = (-100)
+        self.rect.y = (-130)
         self.speedx = (0)
         self.speedy = (5)
 
@@ -91,7 +91,7 @@ class Taxi(pygame.sprite.Sprite):
         # novas posições e velocidades
         if self.rect.top > ALTURA:
             self.rect.x = (190)
-            self.rect.y = (-100)
+            self.rect.y = (-130)
             self.speedx = (0)
             self.speedy = (5)
 
