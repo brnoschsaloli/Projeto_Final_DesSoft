@@ -9,7 +9,8 @@ LARGURA_PICAPE = 140
 ALTURA_PICAPE = 160
 LARGURA_TAXI = 120
 ALTURA_TAXI = 160
-
+ALTURA_VERDE = 160
+LARGURA_VERDE = 120
 
 window = pygame.display.set_mode((LARGURA, ALTURA))
 pygame.display.set_caption('Rápidos e muito bravos')
@@ -27,6 +28,9 @@ picape_img = pygame.transform.scale(picape_img, (LARGURA_PICAPE,ALTURA_PICAPE))
 
 taxi_img = pygame.image.load('assets/Images/taxi_rotacionado.png')
 taxi_img = pygame.transform.scale(taxi_img, (LARGURA_TAXI,ALTURA_TAXI))
+
+verde_img = pygame.image.load('assets/Images/carro verde2_rotacionada.png')
+verde_img = pygame.transform.scale(verde_img, (LARGURA_VERDE,ALTURA_VERDE))
 
 class Carro(pygame.sprite.Sprite):
     def __init__(self, img):
@@ -94,7 +98,29 @@ class Taxi(pygame.sprite.Sprite):
             self.rect.y = (-130)
             self.speedx = (0)
             self.speedy = (5)
+class Carro_verde(pygame.sprite.Sprite):
+    def __init__(self, img):
+        # Construtor da classe mãe (Sprite).
+        pygame.sprite.Sprite.__init__(self)
 
+        self.image = img
+        self.rect = self.image.get_rect()
+        self.rect.x = (400)
+        self.rect.y = (-150)
+        self.speedx = (0)
+        self.speedy = (7)
+
+    def update(self):
+        # Atualizando a posição do meteoro
+        self.rect.x += self.speedx
+        self.rect.y += self.speedy
+        # Se o meteoro passar do final da tela, volta para cima e sorteia
+        # novas posições e velocidades
+        if self.rect.top > ALTURA:
+            self.rect.x = (400)
+            self.rect.y = (-150)
+            self.speedx = (0)
+            self.speedy = (7)
 jogadô = Carro(carro_img)
 clock = pygame.time.Clock()
 FPS = 60
@@ -105,6 +131,8 @@ for i in range(1):
     all_sprites.add(picape)
     taxi = Taxi(taxi_img)
     all_sprites.add(taxi)
+    carro_verde = Carro_verde(verde_img)
+    all_sprites.add(carro_verde)
 while jogo:
 
     clock.tick(FPS)
