@@ -11,6 +11,7 @@ LARGURA_TAXI = 120
 ALTURA_TAXI = 160
 ALTURA_VERDE = 160
 LARGURA_VERDE = 120
+i = 0
 
 window = pygame.display.set_mode((LARGURA, ALTURA))
 pygame.display.set_caption('Rápidos e muito bravos')
@@ -19,14 +20,6 @@ jogo = True
 
 rua_img = pygame.image.load('assets/Images/rua2.png').convert()
 rua_img = pygame.transform.scale(rua_img, (570, 870))
-
-rua2_img = pygame.image.load('assets/Images/rua2.png').convert()
-rua2_img = pygame.transform.scale(rua2_img, (570, 870))
-
-rua3_img = pygame.image.load('assets/Images/rua2.png').convert()
-rua3_img = pygame.transform.scale(rua3_img, (570, 870))
-
-ruas = [rua_img, rua2_img, rua3_img]
 
 carro_img = pygame.image.load('assets/Images/carro mustang.png')
 carro_img = pygame.transform.scale(carro_img, (LARGURA_CARRO,ALTURA_CARRO))
@@ -39,6 +32,18 @@ taxi_img = pygame.transform.scale(taxi_img, (LARGURA_TAXI,ALTURA_TAXI))
 
 verde_img = pygame.image.load('assets/Images/carro verde2_rotacionada.png')
 verde_img = pygame.transform.scale(verde_img, (LARGURA_VERDE,ALTURA_VERDE))
+
+rua2_img = pygame.image.load('assets/Images/rua2_2.png').convert()
+rua2_img = pygame.transform.scale(rua2_img, (570, 870))
+
+rua3_img = pygame.image.load('assets/Images/rua2_3.png').convert()
+rua3_img = pygame.transform.scale(rua3_img, (570, 870))
+
+rua4_img = pygame.image.load('assets/Images/rua2_4.png').convert()
+rua4_img = pygame.transform.scale(rua4_img, (570, 870))
+
+lista_ruas = [rua_img,rua_img,rua2_img,rua2_img,rua3_img,rua3_img,rua4_img,rua4_img]
+
 
 class Carro(pygame.sprite.Sprite):
     def __init__(self, img):
@@ -141,6 +146,7 @@ for i in range(1):
     all_sprites.add(taxi)
     carro_verde = Carro_verde(verde_img)
     all_sprites.add(carro_verde)
+
 while jogo:
 
     clock.tick(FPS)
@@ -159,13 +165,17 @@ while jogo:
                 jogadô.speedx += 4
             if event.key == pygame.K_RIGHT:
                 jogadô.speedx -= 4
-                
+          
         if event.type == pygame.QUIT:
             jogo = False
+
     all_sprites.update()
     window.fill((255, 255, 255))
-    window.blit(rua_img, (0, 0))
+    window.blit(lista_ruas[i], (0, 0))
     all_sprites.draw(window)
     pygame.display.update() 
+    i += 1
+    if i > len(lista_ruas)-1:
+        i = 0
 
 pygame.quit() 
