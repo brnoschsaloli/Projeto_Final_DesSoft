@@ -320,32 +320,6 @@ if GAME:
         all_sprites.add(jogadô,carro_verde,taxi,picape,caminhão,polícia,carro_rosa,van)
         carros.add(taxi,picape,carro_verde,caminhão,carro_rosa,polícia,van)
 
-        def update(self):
-            # Atualizando a posição do meteoro
-            self.rect.x += self.speedx
-            self.rect.y += self.speedy
-            # Se o meteoro passar do final da tela, volta para cima e sorteia
-            # novas posições e velocidades
-            if self.rect.top > ALTURA:
-                self.rect.x = (random.randint((0+LARGURA_VERDE),(LARGURA-LARGURA_VERDE)))
-                self.rect.y = (-170)
-                self.speedx = (0)
-                self.speedy = (5)
-    jogadô = Carro(carro_img)
-    clock = pygame.time.Clock()
-    FPS = 60
-    all_sprites = pygame.sprite.Group()
-    carros = pygame.sprite.Group()
-    all_sprites.add(jogadô)
-    for i in range(1):
-        picape = Picape(picape_img)
-        all_sprites.add(picape)
-        taxi = Taxi(taxi_img)
-        all_sprites.add(taxi)
-        carro_verde = Carro_verde(verde_img)
-        all_sprites.add(carro_verde)
-        carros.add(taxi,picape,carro_verde)
-
     pygame.mixer.music.play(loops=-1)
     while jogo:
 
