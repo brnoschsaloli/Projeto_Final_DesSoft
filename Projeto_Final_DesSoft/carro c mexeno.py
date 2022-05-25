@@ -16,7 +16,7 @@ ALTURA_ROSA = 120
 LARGURA_VAN = 80
 ALTURA_VAN = 130 
 LARGURA_CAMINHÃO = 100
-ALTURA_CAMINHÃO = 150
+ALTURA_CAMINHÃO = 300
 LARGURA_POLÍCIA = 70
 ALTURA_POLÍCIA = 120 
 
@@ -172,7 +172,7 @@ class Carro_verde(pygame.sprite.Sprite):
         self.image = img
         self.rect = self.image.get_rect()
         self.rect.x = (400)
-        self.rect.y = (-170)
+        self.rect.y = (-500)
         self.speedx = (0)
         self.speedy = (5)
 
@@ -184,7 +184,7 @@ class Carro_verde(pygame.sprite.Sprite):
         # novas posições e velocidades
         if self.rect.top > ALTURA:
             self.rect.x = (random.randint((0+LARGURA_VERDE),(LARGURA-LARGURA_VERDE)))
-            self.rect.y = (-170)
+            self.rect.y = (-700)
             self.speedx = (0)
             self.speedy = (5)
 class Carro_rosa(pygame.sprite.Sprite):
@@ -195,7 +195,7 @@ class Carro_rosa(pygame.sprite.Sprite):
         self.image = img
         self.rect = self.image.get_rect()
         self.rect.x = (400)
-        self.rect.y = (-170)
+        self.rect.y = (-300)
         self.speedx = (0)
         self.speedy = (5)
 
@@ -207,7 +207,7 @@ class Carro_rosa(pygame.sprite.Sprite):
         # novas posições e velocidades
         if self.rect.top > ALTURA:
             self.rect.x = (random.randint((0+LARGURA_ROSA),(LARGURA-LARGURA_ROSA)))
-            self.rect.y = (-170)
+            self.rect.y = (-800)
             self.speedx = (0)
             self.speedy = (5)
 class Van(pygame.sprite.Sprite):
@@ -218,7 +218,7 @@ class Van(pygame.sprite.Sprite):
         self.image = img
         self.rect = self.image.get_rect()
         self.rect.x = (400)
-        self.rect.y = (-170)
+        self.rect.y = (-600)
         self.speedx = (0)
         self.speedy = (5)
 
@@ -230,7 +230,7 @@ class Van(pygame.sprite.Sprite):
         # novas posições e velocidades
         if self.rect.top > ALTURA:
             self.rect.x = (random.randint((0+LARGURA_VAN),(LARGURA-LARGURA_VAN)))
-            self.rect.y = (-170)
+            self.rect.y = (-600)
             self.speedx = (0)
             self.speedy = (5)
 class Polícia(pygame.sprite.Sprite):
@@ -241,7 +241,7 @@ class Polícia(pygame.sprite.Sprite):
         self.image = img
         self.rect = self.image.get_rect()
         self.rect.x = (400)
-        self.rect.y = (-170)
+        self.rect.y = (-1000)
         self.speedx = (0)
         self.speedy = (5)
 
@@ -253,7 +253,7 @@ class Polícia(pygame.sprite.Sprite):
         # novas posições e velocidades
         if self.rect.top > ALTURA:
             self.rect.x = (random.randint((0+LARGURA_POLÍCIA),(LARGURA-LARGURA_POLÍCIA)))
-            self.rect.y = (-170)
+            self.rect.y = (-1000)
             self.speedx = (0)
             self.speedy = (5)
 class Caminhão(pygame.sprite.Sprite):
@@ -264,7 +264,7 @@ class Caminhão(pygame.sprite.Sprite):
         self.image = img
         self.rect = self.image.get_rect()
         self.rect.x = (400)
-        self.rect.y = (-170)
+        self.rect.y = (-1000)
         self.speedx = (0)
         self.speedy = (5)
 
@@ -275,8 +275,8 @@ class Caminhão(pygame.sprite.Sprite):
         # Se o meteoro passar do final da tela, volta para cima e sorteia
         # novas posições e velocidades
         if self.rect.top > ALTURA:
-            self.rect.x = (random.randint((0+LARGURA_VERDE),(LARGURA-LARGURA_VERDE)))
-            self.rect.y = (-170)
+            self.rect.x = (random.randint((0+LARGURA_CAMINHÃO),(LARGURA-LARGURA_CAMINHÃO)))
+            self.rect.y = (-800)
             self.speedx = (0)
             self.speedy = (5)
 jogadô = Carro(carro_img)
