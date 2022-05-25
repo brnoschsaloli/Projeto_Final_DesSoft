@@ -120,6 +120,8 @@ class Carro(pygame.sprite.Sprite):
             self.rect.right = LARGURA
         if self.rect.left < 0:
             self.rect.left = 0
+        if self.rect.y < 0:
+            self.rect.y = 0
 class Picape(pygame.sprite.Sprite):
     def __init__(self, img):
         # Construtor da classe mãe (Sprite).
