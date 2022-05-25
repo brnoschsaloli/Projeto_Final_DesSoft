@@ -10,8 +10,7 @@ ALTURA_PICAPE = 120
 LARGURA_TAXI = 70
 ALTURA_TAXI = 120
 LARGURA_VERDE = 70
-ALTURA_VERDE = 120
-
+ALTURA_VERDE = 120   
 
 window = pygame.display.set_mode((LARGURA, ALTURA))
 pygame.display.set_caption('Rápidos e muito bravos')
@@ -107,8 +106,8 @@ class Picape(pygame.sprite.Sprite):
         # Se o meteoro passar do final da tela, volta para cima e sorteia
         # novas posições e velocidades
         if self.rect.top > ALTURA:
-            self.rect.x = (40)
-            self.rect.y = (-200)
+            self.rect.x = (random.randint((0+LARGURA_PICAPE),(LARGURA-LARGURA_PICAPE)))
+            self.rect.y = (-220)
             self.speedx = (0)
             self.speedy = (5)
 class Taxi(pygame.sprite.Sprite):
@@ -130,7 +129,7 @@ class Taxi(pygame.sprite.Sprite):
         # Se o meteoro passar do final da tela, volta para cima e sorteia
         # novas posições e velocidades
         if self.rect.top > ALTURA:
-            self.rect.x = (190)
+            self.rect.x = (random.randint((0+LARGURA_TAXI),(LARGURA-LARGURA_TAXI)))
             self.rect.y = (-130)
             self.speedx = (0)
             self.speedy = (5)
@@ -142,9 +141,9 @@ class Carro_verde(pygame.sprite.Sprite):
         self.image = img
         self.rect = self.image.get_rect()
         self.rect.x = (400)
-        self.rect.y = (-150)
+        self.rect.y = (-170)
         self.speedx = (0)
-        self.speedy = (7)
+        self.speedy = (5)
 
     def update(self):
         # Atualizando a posição do meteoro
@@ -153,10 +152,10 @@ class Carro_verde(pygame.sprite.Sprite):
         # Se o meteoro passar do final da tela, volta para cima e sorteia
         # novas posições e velocidades
         if self.rect.top > ALTURA:
-            self.rect.x = (400)
-            self.rect.y = (-150)
+            self.rect.x = (random.randint((0+LARGURA_VERDE),(LARGURA-LARGURA_VERDE)))
+            self.rect.y = (-170)
             self.speedx = (0)
-            self.speedy = (7)
+            self.speedy = (5)
 jogadô = Carro(carro_img)
 clock = pygame.time.Clock()
 FPS = 60
