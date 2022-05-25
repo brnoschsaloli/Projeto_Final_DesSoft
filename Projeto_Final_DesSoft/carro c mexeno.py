@@ -156,6 +156,7 @@ jogadô = Carro(carro_img)
 clock = pygame.time.Clock()
 FPS = 60
 all_sprites = pygame.sprite.Group()
+carros = pygame.sprite.Group()
 all_sprites.add(jogadô)
 for i in range(1):
     picape = Picape(picape_img)
@@ -164,6 +165,7 @@ for i in range(1):
     all_sprites.add(taxi)
     carro_verde = Carro_verde(verde_img)
     all_sprites.add(carro_verde)
+    carros.add(taxi,picape,carro_verde)
 
 while jogo:
 
@@ -195,5 +197,7 @@ while jogo:
     i -= 1
     if i < 0:
         i = len(lista_ruas)-1
-
+    hits = pygame.sprite.spritecollide(jogadô, carros, True)
+    if len(hits)>0:
+        jogo = False
 pygame.quit() 
