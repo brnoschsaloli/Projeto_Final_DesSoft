@@ -37,11 +37,11 @@ while start:
             if event.type == pygame.QUIT:
                 jogo = False
                 GAME = True
-                jorge = False
+                start = False
 
             if event.type == pygame.KEYUP:
                 GAME = True
-                jorge = False
+                start = False
                 
         pygame.display.update()
      
