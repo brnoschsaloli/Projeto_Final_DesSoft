@@ -26,10 +26,11 @@ ALTURA_POLÍCIA = 120
 window = pygame.display.set_mode((LARGURA, ALTURA))
 pygame.display.set_caption('Rápidos e muito bravos')
 
-jorge = True
-imagem = pygame.image.load('assets/Images/inicio.png').convert()
+start = True
+imagem = pygame.image.load('assets/Images/tela_inicio.png').convert()
 imagem = pygame.transform.scale(imagem, (LARGURA, ALTURA))
-while jorge:
+
+while start:
         window.blit(imagem, (0, 0))
         for event in pygame.event.get():
             # Verifica se foi fechado.
