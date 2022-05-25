@@ -10,7 +10,15 @@ ALTURA_PICAPE = 120
 LARGURA_TAXI = 70
 ALTURA_TAXI = 120
 LARGURA_VERDE = 70
-ALTURA_VERDE = 120   
+ALTURA_VERDE = 120 
+LARGURA_ROSA = 70
+ALTURA_ROSA = 120
+LARGURA_VAN = 80
+ALTURA_VAN = 130 
+LARGURA_CAMINHÃO = 100
+ALTURA_CAMINHÃO = 150
+LARGURA_POLÍCIA = 70
+ALTURA_POLÍCIA = 120 
 
 window = pygame.display.set_mode((LARGURA, ALTURA))
 pygame.display.set_caption('Rápidos e muito bravos')
@@ -32,19 +40,16 @@ carro_img = pygame.image.load('assets/Images/carro mustang.png')
 carro_img = pygame.transform.scale(carro_img, (LARGURA_CARRO,ALTURA_CARRO))
 
 van_img = pygame.image.load('assets/Images/van.png')
-van_img = pygame.transform.scale(van_img, (LARGURA_CARRO,ALTURA_CARRO))
+van_img = pygame.transform.scale(van_img, (LARGURA_VAN,ALTURA_VAN))
 
 carro_rosa_img = pygame.image.load('assets/Images/carro_rosa.png')
-carro_rosa_img = pygame.transform.scale(carro_rosa_img, (LARGURA_CARRO,ALTURA_CARRO))
+carro_rosa_img = pygame.transform.scale(carro_rosa_img, (LARGURA_ROSA,ALTURA_ROSA))
 
 polícia_img = pygame.image.load('assets/Images/polícia.png')
-polícia_img = pygame.transform.scale(polícia_img, (LARGURA_CARRO,ALTURA_CARRO))
+polícia_img = pygame.transform.scale(polícia_img, (LARGURA_POLÍCIA,ALTURA_POLÍCIA))
 
-carro_img = pygame.image.load('assets/Images/carro mustang.png')
-carro_img = pygame.transform.scale(carro_img, (LARGURA_CARRO,ALTURA_CARRO))
-
-carro_img = pygame.image.load('assets/Images/carro mustang.png')
-carro_img = pygame.transform.scale(carro_img, (LARGURA_CARRO,ALTURA_CARRO))
+caminhão_img = pygame.image.load('assets/Images/caminhão.png')
+caminhão_img = pygame.transform.scale(caminhão_img, (LARGURA_CAMINHÃO,ALTURA_CAMINHÃO))
 
 picape_img = pygame.image.load('assets/Images/picape2_rotacionada.png')
 picape_img = pygame.transform.scale(picape_img, (LARGURA_PICAPE,ALTURA_PICAPE))
@@ -182,20 +187,113 @@ class Carro_verde(pygame.sprite.Sprite):
             self.rect.y = (-170)
             self.speedx = (0)
             self.speedy = (5)
+class Carro_rosa(pygame.sprite.Sprite):
+    def __init__(self, img):
+        # Construtor da classe mãe (Sprite).
+        pygame.sprite.Sprite.__init__(self)
+
+        self.image = img
+        self.rect = self.image.get_rect()
+        self.rect.x = (400)
+        self.rect.y = (-170)
+        self.speedx = (0)
+        self.speedy = (5)
+
+    def update(self):
+        # Atualizando a posição do meteoro
+        self.rect.x += self.speedx
+        self.rect.y += self.speedy
+        # Se o meteoro passar do final da tela, volta para cima e sorteia
+        # novas posições e velocidades
+        if self.rect.top > ALTURA:
+            self.rect.x = (random.randint((0+LARGURA_ROSA),(LARGURA-LARGURA_ROSA)))
+            self.rect.y = (-170)
+            self.speedx = (0)
+            self.speedy = (5)
+class Van(pygame.sprite.Sprite):
+    def __init__(self, img):
+        # Construtor da classe mãe (Sprite).
+        pygame.sprite.Sprite.__init__(self)
+
+        self.image = img
+        self.rect = self.image.get_rect()
+        self.rect.x = (400)
+        self.rect.y = (-170)
+        self.speedx = (0)
+        self.speedy = (5)
+
+    def update(self):
+        # Atualizando a posição do meteoro
+        self.rect.x += self.speedx
+        self.rect.y += self.speedy
+        # Se o meteoro passar do final da tela, volta para cima e sorteia
+        # novas posições e velocidades
+        if self.rect.top > ALTURA:
+            self.rect.x = (random.randint((0+LARGURA_VAN),(LARGURA-LARGURA_VAN)))
+            self.rect.y = (-170)
+            self.speedx = (0)
+            self.speedy = (5)
+class Polícia(pygame.sprite.Sprite):
+    def __init__(self, img):
+        # Construtor da classe mãe (Sprite).
+        pygame.sprite.Sprite.__init__(self)
+
+        self.image = img
+        self.rect = self.image.get_rect()
+        self.rect.x = (400)
+        self.rect.y = (-170)
+        self.speedx = (0)
+        self.speedy = (5)
+
+    def update(self):
+        # Atualizando a posição do meteoro
+        self.rect.x += self.speedx
+        self.rect.y += self.speedy
+        # Se o meteoro passar do final da tela, volta para cima e sorteia
+        # novas posições e velocidades
+        if self.rect.top > ALTURA:
+            self.rect.x = (random.randint((0+LARGURA_POLÍCIA),(LARGURA-LARGURA_POLÍCIA)))
+            self.rect.y = (-170)
+            self.speedx = (0)
+            self.speedy = (5)
+class Caminhão(pygame.sprite.Sprite):
+    def __init__(self, img):
+        # Construtor da classe mãe (Sprite).
+        pygame.sprite.Sprite.__init__(self)
+
+        self.image = img
+        self.rect = self.image.get_rect()
+        self.rect.x = (400)
+        self.rect.y = (-170)
+        self.speedx = (0)
+        self.speedy = (5)
+
+    def update(self):
+        # Atualizando a posição do meteoro
+        self.rect.x += self.speedx
+        self.rect.y += self.speedy
+        # Se o meteoro passar do final da tela, volta para cima e sorteia
+        # novas posições e velocidades
+        if self.rect.top > ALTURA:
+            self.rect.x = (random.randint((0+LARGURA_VERDE),(LARGURA-LARGURA_VERDE)))
+            self.rect.y = (-170)
+            self.speedx = (0)
+            self.speedy = (5)
 jogadô = Carro(carro_img)
 clock = pygame.time.Clock()
 FPS = 60
 all_sprites = pygame.sprite.Group()
 carros = pygame.sprite.Group()
-all_sprites.add(jogadô)
 for i in range(1):
     picape = Picape(picape_img)
-    all_sprites.add(picape)
     taxi = Taxi(taxi_img)
-    all_sprites.add(taxi)
     carro_verde = Carro_verde(verde_img)
-    all_sprites.add(carro_verde)
-    carros.add(taxi,picape,carro_verde)
+    carro_rosa = Carro_rosa(carro_rosa_img)
+    van = Van(van_img)
+    polícia = Polícia(polícia_img)
+    caminhão = Caminhão(caminhão_img)
+    all_sprites.add(jogadô,carro_verde,taxi,picape,caminhão,polícia,carro_rosa,van)
+    carros.add(taxi,picape,carro_verde,caminhão,carro_rosa,polícia,van)
 
 pygame.mixer.music.play(loops=-1)
 while jogo:
