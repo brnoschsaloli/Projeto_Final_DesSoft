@@ -20,6 +20,9 @@ pygame.display.set_caption('Rápidos e muito bravos')
 
 pygame.mixer.music.load('assets/sounds/transito.mp3')
 pygame.mixer.music.set_volume(0.4)
+pygame.mixer.music.load('assets/sounds/drift.mp3')
+pygame.mixer.music.set_volume(0.6)
+
 batida_sound = pygame.mixer.Sound('assets/sounds/batida.mp3')
 
 
