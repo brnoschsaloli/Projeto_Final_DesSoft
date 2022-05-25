@@ -45,7 +45,7 @@ while jorge:
         pygame.display.update()
      
 
-if GAME:
+while GAME:
     #carrega som
     pygame.mixer.music.load('assets/sounds/transito.mp3')
     pygame.mixer.music.set_volume(0.4)
@@ -373,9 +373,28 @@ if GAME:
         if i < 0:
             i = len(lista_ruas)-1
         hits = pygame.sprite.spritecollide(jogadô, carros, True)
+        
         if len(hits)>0:
-            jogo = False
+            tela_final = pygame.image.load('assets/Images/tela_final(transparente).png').convert()
             batida_sound.play()
+            end = True
+            GAME = False
+            jogo = False
+            score = 0
+            while end:
+                window.blit(tela_final, (0, 0))
+                for event in pygame.event.get():
+                # Verifica se foi fechado.
+                    if event.type == pygame.QUIT:
+                        end = False
+
+                    if event.type == pygame.KEYUP:
+                        GAME = True
+                        end = False
+                
+                pygame.display.update()
+            
         if event.type == pygame.QUIT:
             jogo = False
-    pygame.quit() 
+            GAME = False
+pygame.quit() 
