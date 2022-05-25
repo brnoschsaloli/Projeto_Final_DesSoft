@@ -15,6 +15,14 @@ LARGURA_VERDE = 120
 window = pygame.display.set_mode((LARGURA, ALTURA))
 pygame.display.set_caption('Rápidos e muito bravos')
 
+#carrega som
+
+pygame.mixer.music.load('assets/sounds/transito.mp3')
+pygame.mixer.music.set_volume(0.4)
+batida_sound = pygame.mixer.Sound('assets/sounds/batida.mp3')
+
+
+
 jogo = True
 
 carro_img = pygame.image.load('assets/Images/carro mustang.png')
@@ -167,6 +175,7 @@ for i in range(1):
     all_sprites.add(carro_verde)
     carros.add(taxi,picape,carro_verde)
 
+pygame.mixer.music.play(loops=-1)
 while jogo:
 
     clock.tick(FPS)
@@ -200,4 +209,5 @@ while jogo:
     hits = pygame.sprite.spritecollide(jogadô, carros, True)
     if len(hits)>0:
         jogo = False
+        batida_sound.play()
 pygame.quit() 
