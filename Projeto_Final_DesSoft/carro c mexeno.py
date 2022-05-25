@@ -108,10 +108,12 @@ class Carro(pygame.sprite.Sprite):
         self.rect.centerx = LARGURA / 2
         self.rect.bottom = ALTURA - 10
         self.speedx = 0
+        self.speedy = 0
 
     def update(self):
         # Atualização da posição da nave
         self.rect.x += self.speedx
+        self.rect.y += self.speedy
 
         # Mantem dentro da tela
         if self.rect.right > LARGURA:
@@ -137,7 +139,7 @@ class Picape(pygame.sprite.Sprite):
         # Se o meteoro passar do final da tela, volta para cima e sorteia
         # novas posições e velocidades
         if self.rect.top > ALTURA:
-            self.rect.x = (random.randint((0+LARGURA_PICAPE),(LARGURA-LARGURA_PICAPE)))
+            self.rect.x = (random.randint((0),(LARGURA-LARGURA_PICAPE)))
             self.rect.y = (-220)
             self.speedx = (0)
             self.speedy = (5)
@@ -160,7 +162,7 @@ class Taxi(pygame.sprite.Sprite):
         # Se o meteoro passar do final da tela, volta para cima e sorteia
         # novas posições e velocidades
         if self.rect.top > ALTURA:
-            self.rect.x = (random.randint((0+LARGURA_TAXI),(LARGURA-LARGURA_TAXI)))
+            self.rect.x = (random.randint((0),(LARGURA-LARGURA_TAXI)))
             self.rect.y = (-130)
             self.speedx = (0)
             self.speedy = (5)
@@ -183,7 +185,7 @@ class Carro_verde(pygame.sprite.Sprite):
         # Se o meteoro passar do final da tela, volta para cima e sorteia
         # novas posições e velocidades
         if self.rect.top > ALTURA:
-            self.rect.x = (random.randint((0+LARGURA_VERDE),(LARGURA-LARGURA_VERDE)))
+            self.rect.x = (random.randint((0),(LARGURA-LARGURA_VERDE)))
             self.rect.y = (-700)
             self.speedx = (0)
             self.speedy = (5)
@@ -206,7 +208,7 @@ class Carro_rosa(pygame.sprite.Sprite):
         # Se o meteoro passar do final da tela, volta para cima e sorteia
         # novas posições e velocidades
         if self.rect.top > ALTURA:
-            self.rect.x = (random.randint((0+LARGURA_ROSA),(LARGURA-LARGURA_ROSA)))
+            self.rect.x = (random.randint((0),(LARGURA-LARGURA_ROSA)))
             self.rect.y = (-800)
             self.speedx = (0)
             self.speedy = (5)
@@ -229,7 +231,7 @@ class Van(pygame.sprite.Sprite):
         # Se o meteoro passar do final da tela, volta para cima e sorteia
         # novas posições e velocidades
         if self.rect.top > ALTURA:
-            self.rect.x = (random.randint((0+LARGURA_VAN),(LARGURA-LARGURA_VAN)))
+            self.rect.x = (random.randint((0),(LARGURA-LARGURA_VAN)))
             self.rect.y = (-600)
             self.speedx = (0)
             self.speedy = (5)
@@ -252,7 +254,7 @@ class Polícia(pygame.sprite.Sprite):
         # Se o meteoro passar do final da tela, volta para cima e sorteia
         # novas posições e velocidades
         if self.rect.top > ALTURA:
-            self.rect.x = (random.randint((0+LARGURA_POLÍCIA),(LARGURA-LARGURA_POLÍCIA)))
+            self.rect.x = (random.randint((0),(LARGURA-LARGURA_POLÍCIA)))
             self.rect.y = (-1000)
             self.speedx = (0)
             self.speedy = (5)
@@ -275,7 +277,7 @@ class Caminhão(pygame.sprite.Sprite):
         # Se o meteoro passar do final da tela, volta para cima e sorteia
         # novas posições e velocidades
         if self.rect.top > ALTURA:
-            self.rect.x = (random.randint((0+LARGURA_CAMINHÃO),(LARGURA-LARGURA_CAMINHÃO)))
+            self.rect.x = (random.randint((0),(LARGURA-LARGURA_CAMINHÃO)))
             self.rect.y = (-800)
             self.speedx = (0)
             self.speedy = (5)
@@ -304,17 +306,25 @@ while jogo:
         if event.type == pygame.KEYDOWN:
             # Dependendo da tecla, altera a velocidade.
             if event.key == pygame.K_LEFT:
-                jogadô.speedx -= 4
+                jogadô.speedx -= 7
             if event.key == pygame.K_RIGHT:
-                jogadô.speedx += 4
+                jogadô.speedx += 7
+            if event.key == pygame.K_UP:
+                jogadô.speedy -= 4
+            if event.key == pygame.K_DOWN:
+                jogadô.speedy += 4
         # Verifica se soltou alguma tecla.
         if event.type == pygame.KEYUP:
             # Dependendo da tecla, altera a velocidade.
             if event.key == pygame.K_LEFT:
-                jogadô.speedx += 4
+                jogadô.speedx += 7
             if event.key == pygame.K_RIGHT:
-                jogadô.speedx -= 4
-          
+                jogadô.speedx -= 7
+            if event.key == pygame.K_UP:
+                jogadô.speedy += 4
+            if event.key == pygame.K_DOWN:
+                jogadô.speedy -= 4
+           
         if event.type == pygame.QUIT:
             jogo = False
 
