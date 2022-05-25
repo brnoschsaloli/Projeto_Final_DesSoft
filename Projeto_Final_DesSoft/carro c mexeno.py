@@ -60,9 +60,13 @@ rua9_img = pygame.transform.scale(rua9_img, (570, 870))
 rua10_img = pygame.image.load('assets/Images/frame10.png').convert()
 rua10_img = pygame.transform.scale(rua10_img, (570, 870))
 
+Pontuação = pygame.font.Font('assets/Fonte/PressStart2P.ttf', 28)
+
 lista_ruas = [rua_img,rua2_img,rua3_img,rua4_img,rua5_img,rua6_img,rua7_img,rua8_img,rua9_img,rua10_img]
 
 i = len(lista_ruas)-1
+
+score = 0
 
 class Carro(pygame.sprite.Sprite):
     def __init__(self, img):
@@ -194,6 +198,11 @@ while jogo:
     window.fill((255, 255, 255))
     window.blit(lista_ruas[i], (0, 0))
     all_sprites.draw(window)
+    text_surface = Pontuação.render("{:08d}".format(score), True, (255, 255, 0))
+    text_rect = text_surface.get_rect()
+    text_rect.midtop = (LARGURA / 2,  10)
+    window.blit(text_surface, text_rect)
+    score += 1
     pygame.display.update() 
     i -= 1
     if i < 0:
