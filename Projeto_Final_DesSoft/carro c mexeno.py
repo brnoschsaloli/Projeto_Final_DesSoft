@@ -31,6 +31,21 @@ jogo = True
 carro_img = pygame.image.load('assets/Images/carro mustang.png')
 carro_img = pygame.transform.scale(carro_img, (LARGURA_CARRO,ALTURA_CARRO))
 
+van_img = pygame.image.load('assets/Images/van.png')
+van_img = pygame.transform.scale(van_img, (LARGURA_CARRO,ALTURA_CARRO))
+
+carro_rosa_img = pygame.image.load('assets/Images/carro_rosa.png')
+carro_rosa_img = pygame.transform.scale(carro_rosa_img, (LARGURA_CARRO,ALTURA_CARRO))
+
+polícia_img = pygame.image.load('assets/Images/polícia.png')
+polícia_img = pygame.transform.scale(polícia_img, (LARGURA_CARRO,ALTURA_CARRO))
+
+carro_img = pygame.image.load('assets/Images/carro mustang.png')
+carro_img = pygame.transform.scale(carro_img, (LARGURA_CARRO,ALTURA_CARRO))
+
+carro_img = pygame.image.load('assets/Images/carro mustang.png')
+carro_img = pygame.transform.scale(carro_img, (LARGURA_CARRO,ALTURA_CARRO))
+
 picape_img = pygame.image.load('assets/Images/picape2_rotacionada.png')
 picape_img = pygame.transform.scale(picape_img, (LARGURA_PICAPE,ALTURA_PICAPE))
 
