@@ -376,7 +376,7 @@ while GAME:
         hits = pygame.sprite.spritecollide(jogadô, carros, True)
         
         if len(hits)>0:
-            tela_final = pygame.image.load('assets/Images/tela_final(transparente).png').convert()
+            tela_final = pygame.image.load('assets/Images/tela_final.png').convert()
             batida_sound.play()
             end = True
             GAME = False
