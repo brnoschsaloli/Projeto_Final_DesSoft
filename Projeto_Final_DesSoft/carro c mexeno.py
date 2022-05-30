@@ -147,7 +147,7 @@ while GAME:
                 self.rect.left = 0
             if self.rect.y < 0:
                 self.rect.y = 0
-            if self.rect.y>ALTURA -ALTURA_CARRO:
+            if self.rect.y>ALTURA - ALTURA_CARRO:
                 self.rect.y = ALTURA - ALTURA_CARRO
     class Picape(pygame.sprite.Sprite):
         def __init__(self, img):
@@ -419,7 +419,6 @@ while GAME:
         if i < 0:
             i = len(lista_ruas)-1
         hits = pygame.sprite.spritecollide(jogadô, carros, True)
-        
         if len(hits)>0:
             tela_final = pygame.image.load('assets/Images/tela_final.png').convert()
             batida_sound.play()
@@ -436,11 +435,11 @@ while GAME:
                 window.blit(tela_final, (0, 0))
                 text_surface = Pontuação.render("{:08d}".format(high_score), True, 	(255,255,255))
                 text_rect = text_surface.get_rect()
-                text_rect.midtop = (450,480)
+                text_rect.midtop = (450,530)
                 window.blit(text_surface, text_rect)
                 text_surface = Pontuação.render("high_score:", True, 	(255,255,255))
                 text_rect = text_surface.get_rect()
-                text_rect.midtop = (190,480)
+                text_rect.midtop = (190,530)
                 window.blit(text_surface, text_rect)
                 for event in pygame.event.get():
                 # Verifica se foi fechado.
