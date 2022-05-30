@@ -3,7 +3,7 @@ import random
 
 pygame.init()
 
-LARGURA = 570
+LARGURA = 600
 ALTURA = 600
 LARGURA_CARRO = 70
 ALTURA_CARRO = 120
@@ -22,6 +22,10 @@ LARGURA_CAMINHÃO = 100
 ALTURA_CAMINHÃO = 300
 LARGURA_POLÍCIA = 70
 ALTURA_POLÍCIA = 120 
+
+lista_score = []
+
+high_score = 0
 
 window = pygame.display.set_mode((LARGURA, ALTURA))
 pygame.display.set_caption('Rápidos e muito bravos')
@@ -55,8 +59,6 @@ while GAME:
 
     batida_sound = pygame.mixer.Sound('assets/sounds/batida.mp3')
 
-
-
     jogo = True
 
     carro_img = pygame.image.load('assets/Images/carro mustang.png')
@@ -84,34 +86,34 @@ while GAME:
     verde_img = pygame.transform.scale(verde_img, (LARGURA_VERDE,ALTURA_VERDE))
 
     rua_img = pygame.image.load('assets/Images/rua2.png').convert()
-    rua_img = pygame.transform.scale(rua_img, (570, 870))
+    rua_img = pygame.transform.scale(rua_img, (600, 870))
 
     rua2_img = pygame.image.load('assets/Images/frame2.png').convert()
-    rua2_img = pygame.transform.scale(rua2_img, (570, 870))
+    rua2_img = pygame.transform.scale(rua2_img, (600, 870))
 
     rua3_img = pygame.image.load('assets/Images/frame3.png').convert()
-    rua3_img = pygame.transform.scale(rua3_img, (570, 870))
+    rua3_img = pygame.transform.scale(rua3_img, (600, 870))
 
     rua4_img = pygame.image.load('assets/Images/frame4.png').convert()
-    rua4_img = pygame.transform.scale(rua4_img, (570, 870))
+    rua4_img = pygame.transform.scale(rua4_img, (600, 870))
 
     rua5_img = pygame.image.load('assets/Images/frame5.png').convert()
-    rua5_img = pygame.transform.scale(rua5_img, (570, 870))
+    rua5_img = pygame.transform.scale(rua5_img, (600, 870))
 
     rua6_img = pygame.image.load('assets/Images/frame6.png').convert()
-    rua6_img = pygame.transform.scale(rua6_img, (570, 870))
+    rua6_img = pygame.transform.scale(rua6_img, (600, 870))
 
     rua7_img = pygame.image.load('assets/Images/frame7.png').convert()
-    rua7_img = pygame.transform.scale(rua7_img, (570, 870))
+    rua7_img = pygame.transform.scale(rua7_img, (600, 870))
 
     rua8_img = pygame.image.load('assets/Images/frame8.png').convert()
-    rua8_img = pygame.transform.scale(rua8_img, (570, 870))
+    rua8_img = pygame.transform.scale(rua8_img, (600, 870))
 
     rua9_img = pygame.image.load('assets/Images/frame9.png').convert()
-    rua9_img = pygame.transform.scale(rua9_img, (570, 870))
+    rua9_img = pygame.transform.scale(rua9_img, (600, 870))
 
     rua10_img = pygame.image.load('assets/Images/frame10.png').convert()
-    rua10_img = pygame.transform.scale(rua10_img, (570, 870))
+    rua10_img = pygame.transform.scale(rua10_img, (600, 870))
 
     Pontuação = pygame.font.Font('assets/Fonte/PressStart2P.ttf', 28)
 
@@ -318,8 +320,8 @@ while GAME:
         van = Van(van_img)
         polícia = Polícia(polícia_img)
         caminhão = Caminhão(caminhão_img)
-        all_sprites.add(jogadô,carro_verde,taxi,picape,caminhão,polícia,carro_rosa,van)
-        carros.add(taxi,picape,carro_verde,caminhão,carro_rosa,polícia,van)
+        all_sprites.add(jogadô,carro_verde,taxi,picape,caminhão)
+        carros.add(taxi,picape,carro_verde,caminhão)
 
     pygame.mixer.music.play(loops=-1)
     while jogo:
@@ -364,10 +366,43 @@ while GAME:
         window.fill((255, 255, 255))
         window.blit(lista_ruas[i], (0, 0))
         all_sprites.draw(window)
-        text_surface = Pontuação.render("{:08d}".format(score), True, (255, 255, 0))
-        text_rect = text_surface.get_rect()
-        text_rect.midtop = (LARGURA / 2,  10)
-        window.blit(text_surface, text_rect)
+
+        if score < 1000:
+            text_surface = Pontuação.render("{:08d}".format(score), True, (255, 255, 0))
+            text_rect = text_surface.get_rect()
+            text_rect.midtop = (LARGURA / 2,  10)
+            window.blit(text_surface, text_rect)
+
+        elif score >= 1000 and score < 2000:
+            text_surface = Pontuação.render("{:08d}".format(score), True, (30, 144, 255))
+            text_rect = text_surface.get_rect()
+            text_rect.midtop = (LARGURA / 2,  10)
+            window.blit(text_surface, text_rect)
+        
+        elif score >= 2000 and score < 3000:
+            text_surface = Pontuação.render("{:08d}".format(score), True, (0, 250, 154))
+            text_rect = text_surface.get_rect()
+            text_rect.midtop = (LARGURA / 2,  10)
+            window.blit(text_surface, text_rect)
+
+        elif score >= 3000 and score < 4000:
+            text_surface = Pontuação.render("{:08d}".format(score), True, (138,43,226))
+            text_rect = text_surface.get_rect()
+            text_rect.midtop = (LARGURA / 2,  10)
+            window.blit(text_surface, text_rect)
+        
+        elif score >= 4000 and score < 5000:
+            text_surface = Pontuação.render("{:08d}".format(score), True, (255,20,147))
+            text_rect = text_surface.get_rect()
+            text_rect.midtop = (LARGURA / 2,  10)
+            window.blit(text_surface, text_rect)
+        
+        elif score >= 5000:
+            text_surface = Pontuação.render("{:08d}".format(score), True, (255, 0, 0))
+            text_rect = text_surface.get_rect()
+            text_rect.midtop = (LARGURA / 2,  10)
+            window.blit(text_surface, text_rect)
+
         score += 1
         pygame.display.update() 
         i -= 1
@@ -381,9 +416,21 @@ while GAME:
             end = True
             GAME = False
             jogo = False
-            score = 0
+            lista_score.append(score)
+            for pontos in lista_score:
+                if pontos >= high_score:
+                    high_score = pontos
+
             while end:
                 window.blit(tela_final, (0, 0))
+                text_surface = Pontuação.render("{:08d}".format(high_score), True, 	(255,255,255))
+                text_rect = text_surface.get_rect()
+                text_rect.midtop = (450,530)
+                window.blit(text_surface, text_rect)
+                text_surface = Pontuação.render("high_score:", True, 	(255,255,255))
+                text_rect = text_surface.get_rect()
+                text_rect.midtop = (190,530)
+                window.blit(text_surface, text_rect)
                 for event in pygame.event.get():
                 # Verifica se foi fechado.
                     if event.type == pygame.QUIT:
