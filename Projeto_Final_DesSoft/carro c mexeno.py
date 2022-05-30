@@ -436,11 +436,11 @@ while GAME:
                 window.blit(tela_final, (0, 0))
                 text_surface = Pontuação.render("{:08d}".format(high_score), True, 	(255,255,255))
                 text_rect = text_surface.get_rect()
-                text_rect.midtop = (450,530)
+                text_rect.midtop = (450,480)
                 window.blit(text_surface, text_rect)
                 text_surface = Pontuação.render("high_score:", True, 	(255,255,255))
                 text_rect = text_surface.get_rect()
-                text_rect.midtop = (190,530)
+                text_rect.midtop = (190,480)
                 window.blit(text_surface, text_rect)
                 for event in pygame.event.get():
                 # Verifica se foi fechado.
