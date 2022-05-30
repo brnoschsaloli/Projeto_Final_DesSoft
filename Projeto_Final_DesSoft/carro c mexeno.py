@@ -320,8 +320,8 @@ while GAME:
         van = Van(van_img)
         polícia = Polícia(polícia_img)
         caminhão = Caminhão(caminhão_img)
-        all_sprites.add(jogadô,carro_verde,taxi,picape,caminhão)
-        carros.add(taxi,picape,carro_verde,caminhão)
+        all_sprites.add(jogadô,carro_verde,taxi,picape,caminhão,polícia,carro_rosa,van)
+        carros.add(taxi,picape,carro_verde,caminhão,carro_rosa,polícia,van)
 
     pygame.mixer.music.play(loops=-1)
     while jogo:
@@ -386,7 +386,7 @@ while GAME:
             window.blit(text_surface, text_rect)
 
         elif score >= 3000 and score < 4000:
-            text_surface = Pontuação.render("{:08d}".format(score), True, (138,43,226))
+            text_surface = Pontuação.render("{:08d}".format(score), True, (128, 0,128))
             text_rect = text_surface.get_rect()
             text_rect.midtop = (LARGURA / 2,  10)
             window.blit(text_surface, text_rect)
@@ -413,7 +413,7 @@ while GAME:
         if len(hits)>0:
             tela_final = pygame.image.load('assets/Images/tela_final.png').convert()
             batida_sound.play()
-            pygame.mixer.music.set_volume(0.2)
+            pygame.mixer.music.set_volume(0.1)
             end = True
             GAME = False
             jogo = False
