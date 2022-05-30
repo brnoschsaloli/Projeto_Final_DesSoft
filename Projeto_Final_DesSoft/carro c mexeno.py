@@ -413,6 +413,7 @@ while GAME:
         if len(hits)>0:
             tela_final = pygame.image.load('assets/Images/tela_final.png').convert()
             batida_sound.play()
+            pygame.mixer.music.set_volume(0.2)
             end = True
             GAME = False
             jogo = False
