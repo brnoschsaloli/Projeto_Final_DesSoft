@@ -332,9 +332,13 @@ while GAME:
             if event.type == pygame.KEYDOWN:
             # Dependendo da tecla, altera a velocidade.
                 if event.key == pygame.K_LEFT:
-                    jogadô.speedx -= 4
+                    jogadô.speedx -= 7
                 if event.key == pygame.K_RIGHT:
-                    jogadô.speedx += 4
+                    jogadô.speedx += 7
+                if event.key == pygame.K_UP:
+                    jogadô.speedy -= 4
+                if event.key == pygame.K_DOWN:
+                    jogadô.speedy += 4
                 if event.key == pygame.K_a:
                     jogadô.speedx -= 7
                 if event.key == pygame.K_d:
