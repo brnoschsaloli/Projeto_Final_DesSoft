@@ -448,8 +448,9 @@ while GAME:
                         end = False
 
                     if event.type == pygame.KEYUP:
-                        GAME = True
-                        end = False
+                        if event.key == pygame.K_SPACE:
+                            GAME = True
+                            end = False
                 
                 pygame.display.update()
             
