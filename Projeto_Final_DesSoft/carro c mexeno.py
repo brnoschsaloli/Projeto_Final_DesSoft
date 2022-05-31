@@ -156,10 +156,12 @@ while GAME:
 
             self.image = img
             self.rect = self.image.get_rect()
-            self.rect.x = (40)
+            self.rect.x = ((random.randint((0),(LARGURA-LARGURA_PICAPE))))
             self.rect.y = (-200)
             self.speedx = (0)
             self.speedy = (5)
+
+        
 
         def update(self):
             # Atualizando a posição do meteoro
@@ -167,11 +169,23 @@ while GAME:
             self.rect.y += self.speedy
             # Se o meteoro passar do final da tela, volta para cima e sorteia
             # novas posições e velocidades
+            
             if self.rect.top > ALTURA:
                 self.rect.x = (random.randint((0),(LARGURA-LARGURA_PICAPE)))
                 self.rect.y = (-220)
                 self.speedx = (0)
                 self.speedy = (5)
+            colide = pygame.sprite.spritecollide(picape, colide_picape ,True)
+            if len(colide)>0:
+                self.rect.y = (-220)
+                self.rect.x = (random.randint((0),(LARGURA-LARGURA_PICAPE)))
+            if len(colide)>1:
+                self.rect.y = (-220)
+                self.rect.x = (random.randint((0),(LARGURA-LARGURA_PICAPE)))
+            if len(colide)>2:
+                self.rect.y = (-220)
+                self.rect.x = (random.randint((0),(LARGURA-LARGURA_PICAPE)))
+
                 
     class Taxi(pygame.sprite.Sprite):
         def __init__(self, img):
@@ -179,7 +193,7 @@ while GAME:
             pygame.sprite.Sprite.__init__(self)
             self.image = img
             self.rect = self.image.get_rect()
-            self.rect.x = (190)
+            self.rect.x = ((random.randint((0),(LARGURA-LARGURA_TAXI))))
             self.rect.y = (-130)
             self.speedx = (0)
             self.speedy = (5)
@@ -194,14 +208,23 @@ while GAME:
                 self.rect.y = (-130)
                 self.speedx = (0)
                 self.speedy = (5)
-
+            colide = pygame.sprite.spritecollide(taxi, colide_taxi ,True)
+            if len(colide)>0:
+                self.rect.y = (-130)
+                self.rect.x = (random.randint((0),(LARGURA-LARGURA_TAXI)))
+            if len(colide)>1:
+                self.rect.y = (-130)
+                self.rect.x = (random.randint((0),(LARGURA-LARGURA_TAXI)))
+            if len(colide)>2:
+                self.rect.y = (-130)
+                self.rect.x = (random.randint((0),(LARGURA-LARGURA_TAXI)))
     class Carro_verde(pygame.sprite.Sprite):
         def __init__(self, img):
             # Construtor da classe mãe (Sprite).
             pygame.sprite.Sprite.__init__(self)
             self.image = img
             self.rect = self.image.get_rect()
-            self.rect.x = (400)
+            self.rect.x = ((random.randint((0),(LARGURA-LARGURA_VERDE))))
             self.rect.y = (-500)
             self.speedx = (0)
             self.speedy = (5)
@@ -217,6 +240,16 @@ while GAME:
                 self.rect.y = (-700)
                 self.speedx = (0)
                 self.speedy = (5)
+            colide = pygame.sprite.spritecollide(carro_verde, colide_verde , True)
+            if len(colide)>0:
+                self.rect.y = (-250)
+                self.rect.x = (random.randint((0),(LARGURA-LARGURA_VERDE)))
+            if len(colide)>1:
+                self.rect.y = (-250)
+                self.rect.x = (random.randint((0),(LARGURA-LARGURA_VERDE)))
+            if len(colide)>2:
+                self.rect.y = (-250)
+                self.rect.x = (random.randint((0),(LARGURA-LARGURA_VERDE)))
     class Carro_rosa(pygame.sprite.Sprite):
         def __init__(self, img):
             # Construtor da classe mãe (Sprite).
@@ -224,8 +257,8 @@ while GAME:
 
             self.image = img
             self.rect = self.image.get_rect()
-            self.rect.x = (400)
-            self.rect.y = (-300)
+            self.rect.x = ((random.randint((0),(LARGURA-LARGURA_ROSA))))
+            self.rect.y = (-2000)
             self.speedx = (0)
             self.speedy = (5)
 
@@ -237,9 +270,19 @@ while GAME:
             # novas posições e velocidades
             if self.rect.top > ALTURA:
                 self.rect.x = (random.randint((0),(LARGURA-LARGURA_ROSA)))
-                self.rect.y = (-800)
+                self.rect.y = (-2000)
                 self.speedx = (0)
                 self.speedy = (5)
+            colide = pygame.sprite.spritecollide(carro_rosa, colide_rosa , True)
+            if len(colide)>0:
+                self.rect.y = (-200)
+                self.rect.x = (random.randint((0),(LARGURA-LARGURA_ROSA)))
+            if len(colide)>1:
+                self.rect.y = (-200)
+                self.rect.x = (random.randint((0),(LARGURA-LARGURA_ROSA)))
+            if len(colide)>2:
+                self.rect.y = (-200)
+                self.rect.x = (random.randint((0),(LARGURA-LARGURA_ROSA)))
     class Van(pygame.sprite.Sprite):
         def __init__(self, img):
             # Construtor da classe mãe (Sprite).
@@ -247,8 +290,8 @@ while GAME:
 
             self.image = img
             self.rect = self.image.get_rect()
-            self.rect.x = (400)
-            self.rect.y = (-600)
+            self.rect.x = ((random.randint((0),(LARGURA-LARGURA_VAN))))
+            self.rect.y = (-7000)
             self.speedx = (0)
             self.speedy = (5)
 
@@ -260,9 +303,19 @@ while GAME:
             # novas posições e velocidades
             if self.rect.top > ALTURA:
                 self.rect.x = (random.randint((0),(LARGURA-LARGURA_VAN)))
-                self.rect.y = (-600)
+                self.rect.y = (-3000)
                 self.speedx = (0)
                 self.speedy = (5)
+            colide = pygame.sprite.spritecollide(van, colide_van ,True)
+            if len(colide)>0:
+                self.rect.y = (-700)
+                self.rect.x = (random.randint((0),(LARGURA-LARGURA_VAN)))
+            if len(colide)>1:
+                self.rect.y = (-700)
+                self.rect.x = (random.randint((0),(LARGURA-LARGURA_VAN)))
+            if len(colide)>2:
+                self.rect.y = (-700)
+                self.rect.x = (random.randint((0),(LARGURA-LARGURA_VAN)))
     class Polícia(pygame.sprite.Sprite):
         def __init__(self, img):
             # Construtor da classe mãe (Sprite).
@@ -270,8 +323,8 @@ while GAME:
 
             self.image = img
             self.rect = self.image.get_rect()
-            self.rect.x = (400)
-            self.rect.y = (-1000)
+            self.rect.x = (random.randint((0),(LARGURA-LARGURA_POLÍCIA)))
+            self.rect.y = (-3)
             self.speedx = (0)
             self.speedy = (5)
 
@@ -283,9 +336,19 @@ while GAME:
             # novas posições e velocidades
             if self.rect.top > ALTURA:
                 self.rect.x = (random.randint((0),(LARGURA-LARGURA_POLÍCIA)))
-                self.rect.y = (-1000)
+                self.rect.y = (-300)
                 self.speedx = (0)
                 self.speedy = (5)
+            colide = pygame.sprite.spritecollide(polícia, colide_polícia ,True)
+            if len(colide)>0:
+                self.rect.y = (-300)
+                self.rect.x = (random.randint((0),(LARGURA-LARGURA_POLÍCIA)))
+            if len(colide)>1:
+                self.rect.y = (-300)
+                self.rect.x = (random.randint((0),(LARGURA-LARGURA_POLÍCIA)))
+            if len(colide)>2:
+                self.rect.y = (-300)
+                self.rect.x = (random.randint((0),(LARGURA-LARGURA_POLÍCIA)))
     class Caminhão(pygame.sprite.Sprite):
         def __init__(self, img):
             # Construtor da classe mãe (Sprite).
@@ -293,8 +356,8 @@ while GAME:
 
             self.image = img
             self.rect = self.image.get_rect()
-            self.rect.x = (400)
-            self.rect.y = (-1000)
+            self.rect.x = ((random.randint((0),(LARGURA-LARGURA_CAMINHÃO))))
+            self.rect.y = (-400)
             self.speedx = (0)
             self.speedy = (5)
 
@@ -306,14 +369,31 @@ while GAME:
             # novas posições e velocidades
             if self.rect.top > ALTURA:
                 self.rect.x = (random.randint((0),(LARGURA-LARGURA_CAMINHÃO)))
-                self.rect.y = (-800)
+                self.rect.y = (-400)
                 self.speedx = (0)
                 self.speedy = (5)
+            colide = pygame.sprite.spritecollide(caminhão, colide_caminhão , True)
+            if len(colide)>0:
+                self.rect.y = (-400)
+                self.rect.x = ((random.randint((0),(LARGURA-LARGURA_CAMINHÃO))))
+            if len(colide)>1:
+                self.rect.y = (-400)
+                self.rect.x = ((random.randint((0),(LARGURA-LARGURA_CAMINHÃO))))
+            if len(colide)>2:
+                self.rect.y = (-400)
+                self.rect.x = ((random.randint((0),(LARGURA-LARGURA_CAMINHÃO))))
     jogadô = Carro(carro_img)
     clock = pygame.time.Clock()
     FPS = 60
     all_sprites = pygame.sprite.Group()
     carros = pygame.sprite.Group()
+    colide_picape = pygame.sprite.Group()
+    colide_taxi = pygame.sprite.Group()
+    colide_verde = pygame.sprite.Group()
+    colide_rosa = pygame.sprite.Group()
+    colide_polícia = pygame.sprite.Group()
+    colide_van = pygame.sprite.Group()
+    colide_caminhão = pygame.sprite.Group()
     for i in range(1):
         picape = Picape(picape_img)
         taxi = Taxi(taxi_img)
@@ -324,7 +404,13 @@ while GAME:
         caminhão = Caminhão(caminhão_img)
         all_sprites.add(jogadô,carro_verde,taxi,picape,caminhão,polícia,carro_rosa,van)
         carros.add(taxi,picape,carro_verde,caminhão,carro_rosa,polícia,van)
-
+        colide_picape.add(taxi,carro_verde,caminhão,carro_rosa,polícia,van)
+        colide_taxi.add(picape,carro_verde,caminhão,carro_rosa,polícia,van)
+        colide_verde.add(taxi,picape,caminhão,carro_rosa,polícia,van)
+        colide_rosa.add(taxi,picape,carro_verde,caminhão,polícia,van)
+        colide_polícia.add(taxi,picape,carro_verde,caminhão,carro_rosa,van)
+        colide_van.add(taxi,picape,carro_verde,caminhão,carro_rosa,polícia)
+        colide_caminhão.add(taxi,picape,carro_verde,carro_rosa,polícia,van)
     pygame.mixer.music.play(loops=-1)
     while jogo:
 
