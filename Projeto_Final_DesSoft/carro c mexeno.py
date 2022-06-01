@@ -156,8 +156,8 @@ while GAME:
             self.carros = carros
             self.image = img
             self.rect = self.image.get_rect()
-            self.rect.x = ((random.randint((0),(LARGURA-LARGURA_PICAPE))))
-            self.rect.y = (-200)
+            self.rect.x = (10)
+            self.rect.y = (-250)
             self.speedx = (0)
             self.speedy = (5)
 
@@ -172,7 +172,7 @@ while GAME:
             
             if self.rect.top > ALTURA:
                 self.rect.x = (random.randint((0),(LARGURA-LARGURA_PICAPE)))
-                self.rect.y = (-220)
+                self.rect.y = (-250)
                 self.speedx = (0)
                 self.speedy = (5)
                 colide = pygame.sprite.spritecollide(self, self.carros, False)
@@ -189,7 +189,7 @@ while GAME:
             self.carros = carros
             self.image = img
             self.rect = self.image.get_rect()
-            self.rect.x = ((random.randint((0),(LARGURA-LARGURA_TAXI))))
+            self.rect.x = (100)
             self.rect.y = (-130)
             self.speedx = (0)
             self.speedy = (5)
@@ -216,8 +216,8 @@ while GAME:
             self.carros = carros
             self.image = img
             self.rect = self.image.get_rect()
-            self.rect.x = ((random.randint((0),(LARGURA-LARGURA_VERDE))))
-            self.rect.y = (-500)
+            self.rect.x = (170)
+            self.rect.y = (-700)
             self.speedx = (0)
             self.speedy = (5)
 
@@ -245,7 +245,7 @@ while GAME:
 
             self.image = img
             self.rect = self.image.get_rect()
-            self.rect.x = ((random.randint((0),(LARGURA-LARGURA_ROSA))))
+            self.rect.x = (250)
             self.rect.y = (-2000)
             self.speedx = (0)
             self.speedy = (5)
@@ -274,7 +274,7 @@ while GAME:
 
             self.image = img
             self.rect = self.image.get_rect()
-            self.rect.x = ((random.randint((0),(LARGURA-LARGURA_VAN))))
+            self.rect.x = (330)
             self.rect.y = (-7000)
             self.speedx = (0)
             self.speedy = (5)
@@ -303,7 +303,7 @@ while GAME:
 
             self.image = img
             self.rect = self.image.get_rect()
-            self.rect.x = (random.randint((0),(LARGURA-LARGURA_POLÍCIA)))
+            self.rect.x = (360)
             self.rect.y = (-3)
             self.speedx = (0)
             self.speedy = (5)
@@ -344,7 +344,7 @@ while GAME:
             # Se o meteoro passar do final da tela, volta para cima e sorteia
             # novas posições e velocidades
             if self.rect.top > ALTURA:
-                self.rect.x = (random.randint((0),(LARGURA-LARGURA_CAMINHÃO)))
+                self.rect.x = (430)
                 self.rect.y = (-400)
                 self.speedx = (0)
                 self.speedy = (5)
