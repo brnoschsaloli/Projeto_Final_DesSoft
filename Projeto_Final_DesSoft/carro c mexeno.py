@@ -457,6 +457,7 @@ while GAME:
             window.blit(text_surface, text_rect)
 
         score += 1
+        
         pygame.display.update() 
         i -= 1
         if i < 0:
