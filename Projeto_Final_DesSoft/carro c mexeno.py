@@ -123,6 +123,10 @@ while GAME:
 
     score = 0
 
+    score_1000 = 0
+
+    p = 0
+
     class Carro(pygame.sprite.Sprite):
         def __init__(self, img):
             # Construtor da classe mãe (Sprite).
@@ -275,7 +279,7 @@ while GAME:
             self.image = img
             self.rect = self.image.get_rect()
             self.rect.x = (330)
-            self.rect.y = (-7000)
+            self.rect.y = (-700)
             self.speedx = (0)
             self.speedy = (5)
 
@@ -304,7 +308,7 @@ while GAME:
             self.image = img
             self.rect = self.image.get_rect()
             self.rect.x = (360)
-            self.rect.y = (-3)
+            self.rect.y = (-200)
             self.speedx = (0)
             self.speedy = (5)
 
@@ -358,6 +362,7 @@ while GAME:
     FPS = 60
     all_sprites = pygame.sprite.Group()
     carros = pygame.sprite.Group()
+
     for i in range(1):
         picape = Picape(picape_img,carros)
         taxi = Taxi(taxi_img,carros)
@@ -366,9 +371,11 @@ while GAME:
         van = Van(van_img,carros)
         polícia = Polícia(polícia_img,carros)
         caminhão = Caminhão(caminhão_img,carros)
-        all_sprites.add(jogadô,carro_verde,taxi,picape,caminhão,polícia,carro_rosa,van)
+        all_sprites.add(jogadô,carro_verde,taxi)
         carros.add(taxi,picape,carro_verde,caminhão,carro_rosa,polícia,van)
+
     pygame.mixer.music.play(loops=-1)
+
     while jogo:
 
         clock.tick(FPS)
@@ -414,6 +421,13 @@ while GAME:
                     
             if event.type == pygame.QUIT:
                 jogo = False
+            
+        lista_adicionais = [polícia,carro_rosa,van,caminhão]
+
+        if score_1000 == 1000 and p < len(lista_adicionais):
+            all_sprites.add(lista_adicionais[p])
+            score_1000 = 0
+            p += 1
 
         all_sprites.update()
         window.fill((255, 255, 255))
@@ -457,7 +471,8 @@ while GAME:
             window.blit(text_surface, text_rect)
 
         score += 1
-        
+        score_1000 += 1
+
         pygame.display.update() 
         i -= 1
         if i < 0:
