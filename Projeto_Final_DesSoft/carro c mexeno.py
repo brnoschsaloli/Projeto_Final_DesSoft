@@ -364,10 +364,9 @@ while GAME:
         carro_verde = Carro_verde(verde_img,carros)
         carro_rosa = Carro_rosa(carro_rosa_img,carros)
         van = Van(van_img,carros)
-        polícia = Polícia(polícia_img,carros)
         caminhão = Caminhão(caminhão_img,carros)
-        all_sprites.add(jogadô,carro_verde,taxi,picape,caminhão,polícia,carro_rosa,van)
-        carros.add(taxi,picape,carro_verde,caminhão,carro_rosa,polícia,van)
+        all_sprites.add(jogadô,carro_verde,taxi,picape,caminhão,carro_rosa,van)
+        carros.add(taxi,picape,carro_verde,caminhão,carro_rosa,van)
     pygame.mixer.music.play(loops=-1)
     while jogo:
 
