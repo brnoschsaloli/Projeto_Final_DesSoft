@@ -375,7 +375,7 @@ while GAME:
         carros.add(taxi,picape,carro_verde,caminhão,carro_rosa,polícia,van)
 
     pygame.mixer.music.play(loops=-1)
-
+  
     while jogo:
 
         clock.tick(FPS)
