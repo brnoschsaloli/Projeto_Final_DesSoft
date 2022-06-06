@@ -67,8 +67,9 @@ while start:
 while GAME:
     #definindo váriaveis necessárias 
     score = 0
-    score_1000 = 0
-    p = 0
+    score_750 = 0
+    score_100 = 0
+    c = 0
     v = 4
 
     #carrega sons
@@ -139,7 +140,7 @@ while GAME:
     #cria pontuação
     Pontuação = pygame.font.Font('assets/Fonte/PressStart2P.ttf', 28)
 
-    #lista de ruas para movimento do fundo
+    #lista de ruas para animação do fundo
     lista_ruas = [rua_img,rua2_img,rua3_img,rua4_img,rua5_img,rua6_img,rua7_img,rua8_img,rua9_img,rua10_img]
 
     i = len(lista_ruas)-1
@@ -174,37 +175,6 @@ while GAME:
                 self.rect.y = 0
             if self.rect.y>ALTURA - ALTURA_CARRO:
                 self.rect.y = ALTURA - ALTURA_CARRO
-    class Picape(pygame.sprite.Sprite):
-        def __init__(self, img,carros):
-            # Construtor da classe mãe (Sprite).
-            pygame.sprite.Sprite.__init__(self)
-            self.carros = carros
-            self.image = img
-            self.rect = self.image.get_rect()
-            self.rect.x = (10)
-            self.rect.y = (-250)
-            self.speedx = (0)
-            self.speedy = (v+1)
-
-        
-
-        def update(self):
-            # Atualizando a posição do objeto
-            self.rect.x += self.speedx
-            self.rect.y += self.speedy
-            # Se o objeto passa do final da tela, sua nova posição em x é sorteada aleatoriamente
-            if self.rect.top > ALTURA:
-                self.rect.x = (random.randint((0),(LARGURA-LARGURA_PICAPE)))
-                self.rect.y = (-250)
-                self.speedx = (0)
-                self.speedy = (v)
-                colide = pygame.sprite.spritecollide(self, self.carros, False)
-                #Impede que os objetos se sobreponham
-                while len(colide) > 1:
-                    self.rect.x = (random.randint((0),(LARGURA-LARGURA_PICAPE)))
-                    colide = pygame.sprite.spritecollide(self, self.carros, False)
-            
-
                 
     class Taxi(pygame.sprite.Sprite):
         def __init__(self, img,carros):
@@ -216,7 +186,7 @@ while GAME:
             self.rect.x = (100)
             self.rect.y = (-130)
             self.speedx = (0)
-            self.speedy = (v)
+            self.speedy = (4)
         def update(self):
             # Atualizando a posição do objeto
             self.rect.x += self.speedx
@@ -242,7 +212,7 @@ while GAME:
             self.rect.x = (170)
             self.rect.y = (-700)
             self.speedx = (0)
-            self.speedy = (v)
+            self.speedy = (4)
 
         def update(self):
             # Atualizando a posição do objeto
@@ -269,9 +239,9 @@ while GAME:
             self.image = img
             self.rect = self.image.get_rect()
             self.rect.x = (250)
-            self.rect.y = (-300)
+            self.rect.y = (-700)
             self.speedx = (0)
-            self.speedy = (v+1)
+            self.speedy = (5.4)
 
         def update(self):
             # Atualizando a posição do objeto
@@ -280,7 +250,7 @@ while GAME:
             # Se o objeto passa do final da tela, sua nova posição em x é sorteada aleatoriamente 
             if self.rect.top > ALTURA:
                 self.rect.x = (random.randint((0),(LARGURA-LARGURA_ROSA)))
-                self.rect.y = (-2000)
+                self.rect.y = (-500)
                 self.speedx = (0)
                 self.speedy = (v)
                 colide = pygame.sprite.spritecollide(self, self.carros, False)
@@ -300,7 +270,7 @@ while GAME:
             self.rect.x = (330)
             self.rect.y = (-700)
             self.speedx = (0)
-            self.speedy = (v+1)
+            self.speedy = (6.1)
 
         def update(self):
             # Atualizando a posição do objeto
@@ -309,7 +279,7 @@ while GAME:
             # Se o objeto passa do final da tela, sua nova posição em x é sorteada aleatoriamente 
             if self.rect.top > ALTURA:
                 self.rect.x = (random.randint((0),(LARGURA-LARGURA_VAN)))
-                self.rect.y = (-3000)
+                self.rect.y = (-700)
                 self.speedx = (0)
                 self.speedy = (v)
                 colide = pygame.sprite.spritecollide(self, self.carros, False)
@@ -329,7 +299,7 @@ while GAME:
             self.rect.x = (360)
             self.rect.y = (-200)
             self.speedx = (0)
-            self.speedy = (v+1)
+            self.speedy = (4.7)
 
         def update(self):
             # Atualizando a posição do objeto
@@ -338,7 +308,7 @@ while GAME:
             # Se o objeto passa do final da tela, sua nova posição em x é sorteada aleatoriamente 
             if self.rect.top > ALTURA:
                 self.rect.x = (random.randint((0),(LARGURA-LARGURA_POLÍCIA)))
-                self.rect.y = (-300)
+                self.rect.y = (-400)
                 self.speedx = (0)
                 self.speedy = (v)
                 colide = pygame.sprite.spritecollide(self, self.carros, False)
@@ -358,7 +328,7 @@ while GAME:
             self.rect.x = (-200)
             self.rect.y = (-400)
             self.speedx = (0)
-            self.speedy = (v+1)
+            self.speedy = (6.8)
 
         def update(self):
             #  Atualizando a posição do objeto
@@ -384,7 +354,6 @@ while GAME:
     carros = pygame.sprite.Group()
 
     for i in range(1):
-        picape = Picape(picape_img,carros)
         taxi = Taxi(taxi_img,carros)
         carro_verde = Carro_verde(verde_img,carros)
         carro_rosa = Carro_rosa(carro_rosa_img,carros)
@@ -392,7 +361,7 @@ while GAME:
         polícia = Polícia(polícia_img,carros)
         caminhão = Caminhão(caminhão_img,carros)
         all_sprites.add(jogadô,carro_verde,taxi)
-        carros.add(taxi,picape,carro_verde,caminhão,carro_rosa,polícia,van)
+        carros.add(taxi,carro_verde,caminhão,carro_rosa,polícia,van)
     #toca a música em loop
     pygame.mixer.music.play(loops=-1)
   
@@ -445,11 +414,14 @@ while GAME:
         lista_adicionais = [polícia,carro_rosa,van,caminhão]
 
         #cria a condição de adição dos novos carros, de acordo com a pontuação e aumenta a velocidade dos carros
-        if score_1000 == 750 and p < len(lista_adicionais):
-            all_sprites.add(lista_adicionais[p])
-            score_1000 = 0
-            p += 1
-            v += 1
+        if score_750 == 750 and c < len(lista_adicionais):
+            all_sprites.add(lista_adicionais[c])
+            score_750 = 0
+            c += 1
+
+        if score_100 == 100:
+            score_100 == 0
+            v += 0.1
 
         #coloca o fundo do jogo e estabelece os parâmetros da janela
         all_sprites.update()
@@ -496,7 +468,8 @@ while GAME:
 
         #incrementa o score continuamente ao longo do tempo
         score += 1
-        score_1000 += 1
+        score_750 += 1
+        score_100 += 1
 
         pygame.display.update() 
 
@@ -534,7 +507,7 @@ while GAME:
                 text_rect.midtop = (190,530)
                 window.blit(text_surface, text_rect)
                 for event in pygame.event.get():
-                # Verifica se foi fechado.
+                # #verifica se o usuário apertou quit e fecha o jogo
                     if event.type == pygame.QUIT:
                         end = False
                 #verifica se o jogador apertou o espaço e reinicia o jogo
