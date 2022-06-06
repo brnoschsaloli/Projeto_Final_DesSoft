@@ -386,7 +386,7 @@ while GAME:
         caminhão = Caminhão(caminhão_img,carros)
         all_sprites.add(jogadô,carro_verde,taxi)
         carros.add(taxi,picape,carro_verde,caminhão,carro_rosa,polícia,van)
-
+    #toca a música em loop
     pygame.mixer.music.play(loops=-1)
   
     while jogo:
@@ -503,6 +503,7 @@ while GAME:
         #caso haja colisão, termina o jogo e atualiza para a tela final
         if len(hits)>0:
             tela_final = pygame.image.load('assets/Images/tela_final.png').convert()
+            #toca o som de batida com a colisão
             batida_sound.play()
             pygame.mixer.music.set_volume(0.1)
             end = True
