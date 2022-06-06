@@ -120,6 +120,7 @@ while controles:
             jogo = False
             GAME = True
             controles = False
+            aviso = False
         if event.type == pygame.KEYUP:
                 GAME = True
                 controles = False
@@ -304,7 +305,7 @@ while GAME:
             self.rect.x = (250)
             self.rect.y = (-700)
             self.speedx = (0)
-            self.speedy = (5.4)
+            self.speedy = (4)
 
         def update(self):
             # Atualizando a posição do objeto
@@ -333,7 +334,7 @@ while GAME:
             self.rect.x = (330)
             self.rect.y = (-700)
             self.speedx = (0)
-            self.speedy = (6.1)
+            self.speedy = (4)
 
         def update(self):
             # Atualizando a posição do objeto
@@ -362,7 +363,7 @@ while GAME:
             self.rect.x = (360)
             self.rect.y = (-200)
             self.speedx = (0)
-            self.speedy = (4.7)
+            self.speedy = (4)
 
         def update(self):
             # Atualizando a posição do objeto
@@ -391,7 +392,7 @@ while GAME:
             self.rect.x = (-200)
             self.rect.y = (-400)
             self.speedx = (0)
-            self.speedy = (6.8)
+            self.speedy = (4)
 
         def update(self):
             #  Atualizando a posição do objeto
