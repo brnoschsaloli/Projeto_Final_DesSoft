@@ -438,7 +438,7 @@ while GAME:
         lista_adicionais = [polícia,carro_rosa,van,caminhão]
 
         #cria a condição de adição dos novos carros, de acordo com a pontuação e aumenta a velocidade dos carros
-        if score_1000 == 1000 and p < len(lista_adicionais):
+        if score_1000 == 750 and p < len(lista_adicionais):
             all_sprites.add(lista_adicionais[p])
             score_1000 = 0
             p += 1
