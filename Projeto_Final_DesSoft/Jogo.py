@@ -44,6 +44,11 @@ intro = pygame.mixer.Sound('assets/sounds/musica_inicio.mp3')
 intro.set_volume(0.5)
 intro.play()
 
+#Definindo fontes
+Pontuação = pygame.font.Font('assets/Fonte/PressStart2P.ttf', 28)
+aviso = pygame.font.Font('assets/Fonte/PressStart2P.ttf', 18)
+instruções = pygame.font.Font('assets/Fonte/PressStart2P.ttf', 20)
+instruções2 = pygame.font.Font('assets/Fonte/PressStart2P.ttf', 15)
 
 #programação da tela de início
 while start:
@@ -56,25 +61,86 @@ while start:
                 start = False
             #inicia o jogo
             if event.type == pygame.KEYUP:
-                GAME = True
+                controles = True
                 start = False
-                #para a música de intro
-                intro.stop()
+                
         #atualiza a tela
         pygame.display.update()
-     
+
+while controles:
+    #Desenha as informações na tela
+    window.fill((0,0,0))
+    text_surface = Pontuação.render('Controles', True, 	(255,255,255))
+    text_rect = text_surface.get_rect()
+    text_rect.midtop = (300,5)
+    window.blit(text_surface, text_rect)
+    text_surface = instruções.render("Movimentação", True, 	(255,255,255))
+    text_rect = text_surface.get_rect()
+    text_rect.midtop = (300,60)
+    window.blit(text_surface, text_rect)
+    text_surface = instruções.render("Cima", True, 	(255,255,255))
+    text_rect = text_surface.get_rect()
+    text_rect.midtop = (300,150)
+    window.blit(text_surface, text_rect)
+    text_surface = instruções2.render("W ou ↑", True, 	(255,255,255))
+    text_rect = text_surface.get_rect()
+    text_rect.midtop = (305,190)
+    window.blit(text_surface, text_rect)
+    text_surface = instruções.render("Direita", True, 	(255,255,255))
+    text_rect = text_surface.get_rect()
+    text_rect.midtop = (500,250)
+    window.blit(text_surface, text_rect)
+    text_surface = instruções2.render("D ou →", True, 	(255,255,255))
+    text_rect = text_surface.get_rect()
+    text_rect.midtop = (500,290)
+    window.blit(text_surface, text_rect)
+    text_surface = instruções.render("Esquerda", True, 	(255,255,255))
+    text_rect = text_surface.get_rect()
+    text_rect.midtop = (100,250)
+    window.blit(text_surface, text_rect)
+    text_surface = instruções2.render("E ou ←", True, 	(255,255,255))
+    text_rect = text_surface.get_rect()
+    text_rect.midtop = (100,290)
+    window.blit(text_surface, text_rect)
+    text_surface = instruções.render("Trás", True, 	(255,255,255))
+    text_rect = text_surface.get_rect()
+    text_rect.midtop = (300,350)
+    window.blit(text_surface, text_rect)
+    text_surface = instruções2.render("S ou ↓", True, 	(255,255,255))
+    text_rect = text_surface.get_rect()
+    text_rect.midtop = (305,390)
+    window.blit(text_surface, text_rect)
+    text_surface = instruções2.render("clique qualquer tecla para iniciar", True, 	(0,255,0))
+    text_rect = text_surface.get_rect()
+    text_rect.midtop = (305,500)
+    window.blit(text_surface, text_rect)
+    
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            jogo = False
+            GAME = True
+            controles = False
+        if event.type == pygame.KEYUP:
+                GAME = True
+                controles = False
+                #para a música de intro
+                intro.stop()
+    pygame.display.update() 
 #loop principal
 while GAME:
     #definindo váriaveis necessárias 
     score = 0
     score_750 = 0
     score_100 = 0
+    mova = True
+    tempo = 0
+    tempo_ruas = 0
     c = 0
     v = 4
 
     #carrega sons
     pygame.mixer.music.load('assets/sounds/transito.mp3')
-    pygame.mixer.music.set_volume(0.4)
+    pygame.mixer.music.set_volume(0.6)
     pygame.mixer.music.load('assets/sounds/drift.mp3')
     pygame.mixer.music.set_volume(0.6)
 
@@ -137,9 +203,6 @@ while GAME:
     rua10_img = pygame.image.load('assets/Images/frame10.png').convert()
     rua10_img = pygame.transform.scale(rua10_img, (600, 870))
 
-    #cria pontuação
-    Pontuação = pygame.font.Font('assets/Fonte/PressStart2P.ttf', 28)
-
     #lista de ruas para animação do fundo
     lista_ruas = [rua_img,rua2_img,rua3_img,rua4_img,rua5_img,rua6_img,rua7_img,rua8_img,rua9_img,rua10_img]
 
@@ -184,7 +247,7 @@ while GAME:
             self.image = img
             self.rect = self.image.get_rect()
             self.rect.x = (100)
-            self.rect.y = (-130)
+            self.rect.y = (-500)
             self.speedx = (0)
             self.speedy = (4)
         def update(self):
@@ -425,7 +488,34 @@ while GAME:
 
         #coloca o fundo do jogo e estabelece os parâmetros da janela
         all_sprites.update()
-        window.fill((255, 255, 255))
+        #loop da tela de aviso
+        while mova:
+            window.blit(lista_ruas[i], (0, 0))
+            window.blit(carro_img,(265,470))
+            text_surface = aviso.render('NÃO BATA NOS CARROS!', True, 	(255,0,0))
+            text_rect = text_surface.get_rect()
+            text_rect.midtop = (300,200)
+            window.blit(text_surface,text_rect)
+            for event in pygame.event.get():
+                # #verifica se o usuário apertou quit e fecha o jogo
+                    if event.type == pygame.QUIT:
+                        mova = False
+                        end = False
+            #define o tempo em que o aviso aparecerá na tela
+            if tempo == 2000:
+                end = True
+                mova = False
+                i = 0
+            tempo += 1
+            tempo_ruas += 1
+            #animação das ruas
+            if tempo_ruas == 15:
+                tempo_ruas = 0
+                i -= 1
+            if i < 0:
+                i = len(lista_ruas)-1    
+            pygame.display.update()
+
         window.blit(lista_ruas[i], (0, 0))
         all_sprites.draw(window)
     
@@ -520,5 +610,5 @@ while GAME:
         #verifica se o usuário apertou quit e fecha o jogo
         if event.type == pygame.QUIT:
             jogo = False
-            GAME = False
+            GAME = False 
 pygame.quit() 
