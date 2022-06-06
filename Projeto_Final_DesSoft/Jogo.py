@@ -39,6 +39,11 @@ start = True
 imagem = pygame.image.load('assets/Images/tela_inicio.png').convert()
 imagem = pygame.transform.scale(imagem, (LARGURA, ALTURA))
 
+#coloca música de intro
+intro = pygame.mixer.Sound('assets/sounds/musica_inicio.mp3')
+intro.set_volume(0.5)
+intro.play()
+
 
 #programação da tela de início
 while start:
@@ -49,10 +54,12 @@ while start:
                 jogo = False
                 GAME = True
                 start = False
-
+            #inicia o jogo
             if event.type == pygame.KEYUP:
                 GAME = True
                 start = False
+                #para a música de intro
+                intro.stop()
         #atualiza a tela
         pygame.display.update()
      
