@@ -127,6 +127,8 @@ while GAME:
 
     p = 0
 
+    v = 4
+
     class Carro(pygame.sprite.Sprite):
         def __init__(self, img):
             # Construtor da classe mãe (Sprite).
@@ -163,7 +165,7 @@ while GAME:
             self.rect.x = (10)
             self.rect.y = (-250)
             self.speedx = (0)
-            self.speedy = (5)
+            self.speedy = (v+1)
 
         
 
@@ -178,7 +180,7 @@ while GAME:
                 self.rect.x = (random.randint((0),(LARGURA-LARGURA_PICAPE)))
                 self.rect.y = (-250)
                 self.speedx = (0)
-                self.speedy = (5)
+                self.speedy = (v)
                 colide = pygame.sprite.spritecollide(self, self.carros, False)
                 while len(colide) > 1:
                     self.rect.x = (random.randint((0),(LARGURA-LARGURA_PICAPE)))
@@ -196,7 +198,7 @@ while GAME:
             self.rect.x = (100)
             self.rect.y = (-130)
             self.speedx = (0)
-            self.speedy = (5)
+            self.speedy = (v)
         def update(self):
             # Atualizando a posição do meteoro
             self.rect.x += self.speedx
@@ -207,7 +209,7 @@ while GAME:
                 self.rect.x = (random.randint((0),(LARGURA-LARGURA_TAXI)))
                 self.rect.y = (-130)
                 self.speedx = (0)
-                self.speedy = (5)
+                self.speedy = (v)
                 colide = pygame.sprite.spritecollide(self, self.carros, False)
                 while len(colide) > 1:
                     self.rect.x = (random.randint((0),(LARGURA-LARGURA_TAXI)))
@@ -223,7 +225,7 @@ while GAME:
             self.rect.x = (170)
             self.rect.y = (-700)
             self.speedx = (0)
-            self.speedy = (5)
+            self.speedy = (v)
 
         def update(self):
             # Atualizando a posição do meteoro
@@ -235,7 +237,7 @@ while GAME:
                 self.rect.x = (random.randint((0),(LARGURA-LARGURA_VERDE)))
                 self.rect.y = (-700)
                 self.speedx = (0)
-                self.speedy = (5)
+                self.speedy = (v)
                 colide = pygame.sprite.spritecollide(self, self.carros, False)
                 while len(colide) > 1:
                     self.rect.x = ((random.randint((0),(LARGURA-LARGURA_VERDE))))
@@ -250,9 +252,9 @@ while GAME:
             self.image = img
             self.rect = self.image.get_rect()
             self.rect.x = (250)
-            self.rect.y = (-2000)
+            self.rect.y = (-300)
             self.speedx = (0)
-            self.speedy = (5)
+            self.speedy = (v+1)
 
         def update(self):
             # Atualizando a posição do meteoro
@@ -264,7 +266,7 @@ while GAME:
                 self.rect.x = (random.randint((0),(LARGURA-LARGURA_ROSA)))
                 self.rect.y = (-2000)
                 self.speedx = (0)
-                self.speedy = (5)
+                self.speedy = (v)
                 colide = pygame.sprite.spritecollide(self, self.carros, False)
                 while len(colide) > 1:
                     self.rect.x = ((random.randint((0),(LARGURA-LARGURA_ROSA))))
@@ -281,7 +283,7 @@ while GAME:
             self.rect.x = (330)
             self.rect.y = (-700)
             self.speedx = (0)
-            self.speedy = (5)
+            self.speedy = (v+1)
 
         def update(self):
             # Atualizando a posição do meteoro
@@ -293,7 +295,7 @@ while GAME:
                 self.rect.x = (random.randint((0),(LARGURA-LARGURA_VAN)))
                 self.rect.y = (-3000)
                 self.speedx = (0)
-                self.speedy = (5)
+                self.speedy = (v)
                 colide = pygame.sprite.spritecollide(self, self.carros, False)
                 while len(colide) > 1:
                     self.rect.x = ((random.randint((0),(LARGURA-LARGURA_VAN))))
@@ -310,7 +312,7 @@ while GAME:
             self.rect.x = (360)
             self.rect.y = (-200)
             self.speedx = (0)
-            self.speedy = (5)
+            self.speedy = (v+1)
 
         def update(self):
             # Atualizando a posição do meteoro
@@ -322,7 +324,7 @@ while GAME:
                 self.rect.x = (random.randint((0),(LARGURA-LARGURA_POLÍCIA)))
                 self.rect.y = (-300)
                 self.speedx = (0)
-                self.speedy = (5)
+                self.speedy = (v)
                 colide = pygame.sprite.spritecollide(self, self.carros, False)
                 while len(colide) > 1:
                     self.rect.x = (random.randint((0),(LARGURA-LARGURA_POLÍCIA)))
@@ -339,7 +341,7 @@ while GAME:
             self.rect.x = (-200)
             self.rect.y = (-400)
             self.speedx = (0)
-            self.speedy = (5)
+            self.speedy = (v+1)
 
         def update(self):
             # Atualizando a posição do meteoro
@@ -351,7 +353,7 @@ while GAME:
                 self.rect.x = (430)
                 self.rect.y = (-400)
                 self.speedx = (0)
-                self.speedy = (5)
+                self.speedy = (v)
                 colide = pygame.sprite.spritecollide(self, self.carros, False)
                 while len(colide) > 1:
                     self.rect.x = ((random.randint((0),(LARGURA-LARGURA_CAMINHÃO))))
@@ -428,6 +430,7 @@ while GAME:
             all_sprites.add(lista_adicionais[p])
             score_1000 = 0
             p += 1
+            v += 1
 
         all_sprites.update()
         window.fill((255, 255, 255))
@@ -461,7 +464,7 @@ while GAME:
         elif score >= 4000 and score < 5000:
             text_surface = Pontuação.render("{:08d}".format(score), True, (255,20,147))
             text_rect = text_surface.get_rect()
-            text_rect.midtop = (LARGURA / 2,  10)
+            text_rect.midtop = (LARGURA / 2,  10    )
             window.blit(text_surface, text_rect)
         
         elif score >= 5000:
