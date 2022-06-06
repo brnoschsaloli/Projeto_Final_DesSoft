@@ -31,11 +31,16 @@ window = pygame.display.set_mode((LARGURA, ALTURA))
 pygame.display.set_caption('Rápidos e muito bravos')
 
 start = True
-imagem = pygame.image.load('assets/Images/tela_inicio.png').convert()
-imagem = pygame.transform.scale(imagem, (LARGURA, ALTURA))
+inicio = pygame.image.load('assets/Images/tela_inicio.png').convert()
+inicio = pygame.transform.scale(inicio, (LARGURA, ALTURA))
+
+
+intro = pygame.mixer.Sound('assets/sounds/musica_inicio.mp3')
+intro.set_volume(0.5)
+intro.play()
 
 while start:
-        window.blit(imagem, (0, 0))
+        window.blit(inicio, (0, 0))
         for event in pygame.event.get():
             # Verifica se foi fechado.
             if event.type == pygame.QUIT:
@@ -46,16 +51,15 @@ while start:
             if event.type == pygame.KEYUP:
                 GAME = True
                 start = False
-                
+                intro.stop()
+       
         pygame.display.update()
      
 
 while GAME:
     #carrega som
     pygame.mixer.music.load('assets/sounds/transito.mp3')
-    pygame.mixer.music.set_volume(0.4)
     pygame.mixer.music.load('assets/sounds/drift.mp3')
-    pygame.mixer.music.set_volume(0.6)
 
     batida_sound = pygame.mixer.Sound('assets/sounds/batida.mp3')
 
@@ -165,7 +169,7 @@ while GAME:
             self.rect.x = (10)
             self.rect.y = (-250)
             self.speedx = (0)
-            self.speedy = (v+1)
+            self.speedy = (v+2)
 
         
 
@@ -254,7 +258,7 @@ while GAME:
             self.rect.x = (250)
             self.rect.y = (-300)
             self.speedx = (0)
-            self.speedy = (v+1)
+            self.speedy = (v+2)
 
         def update(self):
             # Atualizando a posição do meteoro
@@ -283,7 +287,7 @@ while GAME:
             self.rect.x = (330)
             self.rect.y = (-700)
             self.speedx = (0)
-            self.speedy = (v+1)
+            self.speedy = (v+2)
 
         def update(self):
             # Atualizando a posição do meteoro
@@ -312,7 +316,7 @@ while GAME:
             self.rect.x = (360)
             self.rect.y = (-200)
             self.speedx = (0)
-            self.speedy = (v+1)
+            self.speedy = (v+2)
 
         def update(self):
             # Atualizando a posição do meteoro
@@ -341,7 +345,7 @@ while GAME:
             self.rect.x = (-200)
             self.rect.y = (-400)
             self.speedx = (0)
-            self.speedy = (v+1)
+            self.speedy = (v+2)
 
         def update(self):
             # Atualizando a posição do meteoro
@@ -484,7 +488,7 @@ while GAME:
         if len(hits)>0:
             tela_final = pygame.image.load('assets/Images/tela_final.png').convert()
             batida_sound.play()
-            pygame.mixer.music.set_volume(0.1)
+            batida_sound.set_volume(0.4)
             end = True
             GAME = False
             jogo = False
