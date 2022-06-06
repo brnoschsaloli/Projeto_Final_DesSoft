@@ -1,6 +1,8 @@
+#importa bibliotecas necessárias
 import pygame
 import random
 
+#inicia módulos importados do pygame
 pygame.init()
 
 #Define parâmetros
@@ -28,11 +30,12 @@ lista_score = []
 
 high_score = 0
 
-#Coloca tela de fundo
+#cria janela do jogo
 window = pygame.display.set_mode((LARGURA, ALTURA))
 pygame.display.set_caption('Rápidos e muito bravos')
 
 start = True
+#cria tela inicial
 imagem = pygame.image.load('assets/Images/tela_inicio.png').convert()
 imagem = pygame.transform.scale(imagem, (LARGURA, ALTURA))
 
