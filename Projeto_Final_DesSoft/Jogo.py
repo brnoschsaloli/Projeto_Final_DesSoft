@@ -250,7 +250,7 @@ while GAME:
             self.rect.x = (100)
             self.rect.y = (-500)
             self.speedx = (0)
-            self.speedy = (v)
+            self.speedy = (4)
         def update(self):
             # Atualizando a posição do objeto
             self.rect.x += self.speedx
@@ -276,7 +276,7 @@ while GAME:
             self.rect.x = (170)
             self.rect.y = (-700)
             self.speedx = (0)
-            self.speedy = (v)
+            self.speedy = (4)
 
         def update(self):
             # Atualizando a posição do objeto
@@ -305,7 +305,7 @@ while GAME:
             self.rect.x = (250)
             self.rect.y = (-700)
             self.speedx = (0)
-            self.speedy = (v)
+            self.speedy = (5.5)
 
         def update(self):
             # Atualizando a posição do objeto
@@ -334,7 +334,7 @@ while GAME:
             self.rect.x = (330)
             self.rect.y = (-700)
             self.speedx = (0)
-            self.speedy = (v)
+            self.speedy = (6.2)
 
         def update(self):
             # Atualizando a posição do objeto
@@ -363,7 +363,7 @@ while GAME:
             self.rect.x = (360)
             self.rect.y = (-200)
             self.speedx = (0)
-            self.speedy = (v)
+            self.speedy = (4.8)
 
         def update(self):
             # Atualizando a posição do objeto
@@ -392,7 +392,7 @@ while GAME:
             self.rect.x = (-200)
             self.rect.y = (-400)
             self.speedx = (0)
-            self.speedy = (v)
+            self.speedy = (6.9)
 
         def update(self):
             #  Atualizando a posição do objeto
@@ -488,8 +488,6 @@ while GAME:
             if v >= 8:
                 v = 7.9
             v += 0.1
-        
-        print(v)
 
         #coloca o fundo do jogo e estabelece os parâmetros da janela
         all_sprites.update()
@@ -574,44 +572,44 @@ while GAME:
             i = len(lista_ruas)-1
 
         #verifica se houve colisão entre o carro principal e os demais objetos
-        #hits = pygame.sprite.spritecollide(jogadô, carros, True)
+        hits = pygame.sprite.spritecollide(jogadô, carros, True)
         #caso haja colisão, termina o jogo e atualiza para a tela final
-        # if len(hits)>0:
-        #     tela_final = pygame.image.load('assets/Images/tela_final.png').convert()
-        #     #toca o som de batida com a colisão
-        #     batida_sound.play()
-        #     pygame.mixer.music.set_volume(0.1)
-        #     end = True
-        #     GAME = False
-        #     jogo = False
-        #     #adiciona o score atual na lista de scores
-        #     lista_score.append(score)
-        #     #verifica qual o maior score e atualiza a variável com ele
-        #     for pontos in lista_score:
-        #         if pontos >= high_score:
-        #             high_score = pontos
+        if len(hits)>0:
+            tela_final = pygame.image.load('assets/Images/tela_final.png').convert()
+            #toca o som de batida com a colisão
+            batida_sound.play()
+            pygame.mixer.music.set_volume(0.1)
+            end = True
+            GAME = False
+            jogo = False
+            #adiciona o score atual na lista de scores
+            lista_score.append(score)
+            #verifica qual o maior score e atualiza a variável com ele
+            for pontos in lista_score:
+                if pontos >= high_score:
+                    high_score = pontos
 
-        #     while end:
-        #         window.blit(tela_final, (0, 0))
-        #         text_surface = Pontuação.render("{:08d}".format(high_score), True, 	(255,255,255))
-        #         text_rect = text_surface.get_rect()
-        #         text_rect.midtop = (450,530)
-        #         window.blit(text_surface, text_rect)
-        #         text_surface = Pontuação.render("high_score:", True, 	(255,255,255))
-        #         text_rect = text_surface.get_rect()
-        #         text_rect.midtop = (190,530)
-        #         window.blit(text_surface, text_rect)
-        #         for event in pygame.event.get():
-        #         # #verifica se o usuário apertou quit e fecha o jogo
-        #             if event.type == pygame.QUIT:
-        #                 end = False
-        #         #verifica se o jogador apertou o espaço e reinicia o jogo
-        #             if event.type == pygame.KEYUP:
-        #                 if event.key == pygame.K_SPACE:
-        #                     GAME = True
-        #                     end = False
+            while end:
+                window.blit(tela_final, (0, 0))
+                text_surface = Pontuação.render("{:08d}".format(high_score), True, 	(255,255,255))
+                text_rect = text_surface.get_rect()
+                text_rect.midtop = (450,530)
+                window.blit(text_surface, text_rect)
+                text_surface = Pontuação.render("high_score:", True, 	(255,255,255))
+                text_rect = text_surface.get_rect()
+                text_rect.midtop = (190,530)
+                window.blit(text_surface, text_rect)
+                for event in pygame.event.get():
+                 # #verifica se o usuário apertou quit e fecha o jogo
+                    if event.type == pygame.QUIT:
+                        end = False
+                 #verifica se o jogador apertou o espaço e reinicia o jogo
+                    if event.type == pygame.KEYUP:
+                        if event.key == pygame.K_SPACE:
+                            GAME = True
+                            end = False
                 
-        #         pygame.display.update()
+                pygame.display.update()
         #verifica se o usuário apertou quit e fecha o jogo
         if event.type == pygame.QUIT:
             jogo = False
