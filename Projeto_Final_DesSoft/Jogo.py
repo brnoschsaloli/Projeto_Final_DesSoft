@@ -78,7 +78,7 @@ while controles:
     text_rect = text_surface.get_rect()
     text_rect.midtop = (300,60)
     window.blit(text_surface, text_rect)
-    text_surface = instruções.render("Cima", True, 	(255,255,255))
+    text_surface = instruções.render("Frente", True, 	(255,255,255))
     text_rect = text_surface.get_rect()
     text_rect.midtop = (300,150)
     window.blit(text_surface, text_rect)
