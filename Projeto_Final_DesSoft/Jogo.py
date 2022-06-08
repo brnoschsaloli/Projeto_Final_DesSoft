@@ -622,12 +622,27 @@ while GAME:
             #adiciona o score atual na lista de scores
             lista_score.append(score)
             #verifica qual o maior score e atualiza a variável com ele
+            if score == high_score:
+                    cor = 255,255,255
+            elif score > high_score:
+                    cor = 0,255,0
+            else:
+                    cor = 255,0,0
+
             for pontos in lista_score:
                 if pontos >= high_score:
                     high_score = pontos
 
             while end:
                 window.blit(tela_final, (0, 0))
+                text_surface = Pontuação.render("{:08d}".format(score), True, 	(cor))
+                text_rect = text_surface.get_rect()
+                text_rect.midtop = (440,480)
+                window.blit(text_surface, text_rect)
+                text_surface = Pontuação.render("Seu score:", True, 	(cor))
+                text_rect = text_surface.get_rect()
+                text_rect.midtop = (190,480)
+                window.blit(text_surface, text_rect)
                 text_surface = Pontuação.render("{:08d}".format(high_score), True, 	(255,255,255))
                 text_rect = text_surface.get_rect()
                 text_rect.midtop = (450,530)
