@@ -98,7 +98,7 @@ while controles:
     text_rect = text_surface.get_rect()
     text_rect.midtop = (100,250)
     window.blit(text_surface, text_rect)
-    text_surface = instruções2.render("E ou ←", True, 	(255,255,255))
+    text_surface = instruções2.render("A ou ←", True, 	(255,255,255))
     text_rect = text_surface.get_rect()
     text_rect.midtop = (100,290)
     window.blit(text_surface, text_rect)
