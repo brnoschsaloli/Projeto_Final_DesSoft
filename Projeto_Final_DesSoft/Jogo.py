@@ -500,6 +500,43 @@ while GAME:
             text_rect.midtop = (300,200)
             window.blit(text_surface,text_rect)
             for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN:
+                # Dependendo da tecla, altera a velocidade, ou seja a posição
+                    if event.key == pygame.K_LEFT:
+                        jogadô.speedx -= 7
+                    if event.key == pygame.K_RIGHT:
+                        jogadô.speedx += 7
+                    if event.key == pygame.K_UP:
+                        jogadô.speedy -= 4
+                    if event.key == pygame.K_DOWN:
+                        jogadô.speedy += 4
+                    if event.key == pygame.K_a:
+                        jogadô.speedx -= 7
+                    if event.key == pygame.K_d:
+                        jogadô.speedx += 7
+                    if event.key == pygame.K_w:
+                        jogadô.speedy -= 4
+                    if event.key == pygame.K_s:
+                        jogadô.speedy += 4
+                # Verifica se soltou alguma tecla.
+                if event.type == pygame.KEYUP:
+                    # Dependendo da tecla, altera a velocidade, ou seja a posição.
+                    if event.key == pygame.K_LEFT:
+                        jogadô.speedx += 7
+                    if event.key == pygame.K_RIGHT:
+                        jogadô.speedx -= 7
+                    if event.key == pygame.K_UP:
+                        jogadô.speedy += 4
+                    if event.key == pygame.K_DOWN:
+                        jogadô.speedy -= 4
+                    if event.key == pygame.K_a:
+                        jogadô.speedx += 7
+                    if event.key == pygame.K_d:
+                        jogadô.speedx -= 7
+                    if event.key == pygame.K_w:
+                        jogadô.speedy += 4
+                    if event.key == pygame.K_s:
+                        jogadô.speedy -= 4
                 # #verifica se o usuário apertou quit e fecha o jogo
                     if event.type == pygame.QUIT:
                         mova = False
