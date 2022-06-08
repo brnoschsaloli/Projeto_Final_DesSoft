@@ -493,6 +493,7 @@ while GAME:
         all_sprites.update()
         #loop da tela de aviso
         while mova:
+            clock.tick(FPS)
             window.blit(lista_ruas[i], (0, 0))
             window.blit(carro_img,(265,470))
             text_surface = aviso.render('NÃO BATA NOS CARROS!', True, 	(255,0,0))
@@ -542,16 +543,12 @@ while GAME:
                         mova = False
                         end = False
             #define o tempo em que o aviso aparecerá na tela
-            if tempo == 2000:
+            if tempo == 150:
                 end = True
                 mova = False
                 i = 0
             tempo += 1
-            tempo_ruas += 1
-            #animação das ruas
-            if tempo_ruas == 15:
-                tempo_ruas = 0
-                i -= 1
+            i -= 1
             if i < 0:
                 i = len(lista_ruas)-1    
             pygame.display.update()
