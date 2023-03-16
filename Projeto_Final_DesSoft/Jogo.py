@@ -209,27 +209,52 @@ while GAME:
 
     i = len(lista_ruas)-1
 
-    
-
- #Construçao das classes de objetos   
-    class Carro(pygame.sprite.Sprite):
-        def __init__(self, img):
+        
+    class Veiculo(pygame.sprite.Sprite):
+        def __init__(self, img,speedx, speedy):
             # Construtor da classe mãe (Sprite).
             pygame.sprite.Sprite.__init__(self)
             
             #posicionamento inicial do carro principal
             self.image = img
             self.rect = self.image.get_rect()
-            self.rect.centerx = LARGURA / 2
-            self.rect.bottom = ALTURA - 10
-            self.speedx = 0
-            self.speedy = 0
+            self.speedx = speedx
+            self.speedy = speedy
 
         def update(self):
             # Atualização da posição do carro principal
             self.rect.x += self.speedx
             self.rect.y += self.speedy
 
+    class Figurantes(Veiculo):
+        def __init__(self,img,rectx,recty,speedx,speedy,carros):
+            super().__init__(img, speedx, speedy)
+            self.carros = carros
+            self.rect.x = rectx
+            self.rect.y = recty
+        
+        def update(self, largura, recty):
+            super().update()
+
+            # Mantem o carro principal dentro da tela
+            if self.rect.top > ALTURA:
+                    self.rect.x = (random.randint((0),(LARGURA-largura)))
+                    self.rect.y = recty
+                    self.speedx = 0
+                    self.speedy = v
+                    colide = pygame.sprite.spritecollide(self, self.carros, False)
+                    while len(colide) > 1:
+                        self.rect.x = (random.randint((0),(LARGURA-largura)))
+                        colide = pygame.sprite.spritecollide(self, self.carros, False)
+
+    class Carro(Veiculo):
+        def __init__(self):
+            super().__init__(carro_img,0,0)
+            self.rect.centerx = LARGURA / 2
+            self.rect.bottom = ALTURA - 10
+        
+        def update(self):
+            super().update()
             # Mantem o carro principal dentro da tela
             if self.rect.right > LARGURA:
                 self.rect.right = LARGURA
@@ -240,190 +265,65 @@ while GAME:
             if self.rect.y>ALTURA - ALTURA_CARRO:
                 self.rect.y = ALTURA - ALTURA_CARRO
                 
-    class Taxi(pygame.sprite.Sprite):
-        def __init__(self, img,carros):
-            # Construtor da classe mãe (Sprite).
-            pygame.sprite.Sprite.__init__(self)
-            self.carros = carros
-            self.image = img
-            self.rect = self.image.get_rect()
-            self.rect.x = (100)
-            self.rect.y = (-500)
-            self.speedx = (0)
-            self.speedy = (4)
+    class Taxi(Figurantes):
+        def __init__(self):
+            super().__init__(taxi_img,100,-500,0,4,carros)
+
         def update(self):
-            # Atualizando a posição do objeto
-            self.rect.x += self.speedx
-            self.rect.y += self.speedy
-            # Se o objeto passa do final da tela, sua nova posição  em x é sorteada aleatoriamente
-            if self.rect.top > ALTURA:
-                self.rect.x = (random.randint((0),(LARGURA-LARGURA_TAXI)))
-                self.rect.y = (-130)
-                self.speedx = (0)
-                self.speedy = (v)
-                colide = pygame.sprite.spritecollide(self, self.carros, False)
-                while len(colide) > 1:
-                    self.rect.x = (random.randint((0),(LARGURA-LARGURA_TAXI)))
-                    colide = pygame.sprite.spritecollide(self, self.carros, False)
+            super().update(LARGURA_TAXI,-130)
             
-    class Carro_verde(pygame.sprite.Sprite):
-        def __init__(self, img,carros):
-            # Construtor da classe mãe (Sprite).
-            pygame.sprite.Sprite.__init__(self)
-            self.carros = carros
-            self.image = img
-            self.rect = self.image.get_rect()
-            self.rect.x = (170)
-            self.rect.y = (-700)
-            self.speedx = (0)
-            self.speedy = (4)
-
-        def update(self):
-            # Atualizando a posição do objeto
-            self.rect.x += self.speedx
-            self.rect.y += self.speedy
-            # Se o objeto passa do final da tela, sua posição em x é sorteada aleatoriamente
-            if self.rect.top > ALTURA:
-                self.rect.x = (random.randint((0),(LARGURA-LARGURA_VERDE)))
-                self.rect.y = (-700)
-                self.speedx = (0)
-                self.speedy = (v)
-                colide = pygame.sprite.spritecollide(self, self.carros, False)
-                #Impede que os objetos se sobreponham
-                while len(colide) > 1:
-                    self.rect.x = ((random.randint((0),(LARGURA-LARGURA_VERDE))))
-                    colide = pygame.sprite.spritecollide(self, self.carros, False)
+           
+    
             
-    class Carro_rosa(pygame.sprite.Sprite):
-        def __init__(self, img,carros):
-            # Construtor da classe mãe (Sprite).
-            pygame.sprite.Sprite.__init__(self)
-            self.carros = carros
-
-            self.image = img
-            self.rect = self.image.get_rect()
-            self.rect.x = (250)
-            self.rect.y = (-700)
-            self.speedx = (0)
-            self.speedy = (5.5)
-
-        def update(self):
-            # Atualizando a posição do objeto
-            self.rect.x += self.speedx
-            self.rect.y += self.speedy
-            # Se o objeto passa do final da tela, sua nova posição em x é sorteada aleatoriamente 
-            if self.rect.top > ALTURA:
-                self.rect.x = (random.randint((0),(LARGURA-LARGURA_ROSA)))
-                self.rect.y = (-500)
-                self.speedx = (0)
-                self.speedy = (v)
-                colide = pygame.sprite.spritecollide(self, self.carros, False)
-                #Impede que os objetos se sobreponham
-                while len(colide) > 1:
-                    self.rect.x = ((random.randint((0),(LARGURA-LARGURA_ROSA))))
-                    colide = pygame.sprite.spritecollide(self, self.carros, False)
+    class Carro_verde(Figurantes):
+        def __init__(self):
+            super().__init__(verde_img,170,-700,0,4,carros)
             
-    class Van(pygame.sprite.Sprite):
-        def __init__(self, img,carros):
-            # Construtor da classe mãe (Sprite).
-            pygame.sprite.Sprite.__init__(self)
-            self.carros = carros
-
-            self.image = img
-            self.rect = self.image.get_rect()
-            self.rect.x = (330)
-            self.rect.y = (-700)
-            self.speedx = (0)
-            self.speedy = (6.2)
-
         def update(self):
-            # Atualizando a posição do objeto
-            self.rect.x += self.speedx
-            self.rect.y += self.speedy
-            # Se o objeto passa do final da tela, sua nova posição em x é sorteada aleatoriamente 
-            if self.rect.top > ALTURA:
-                self.rect.x = (random.randint((0),(LARGURA-LARGURA_VAN)))
-                self.rect.y = (-700)
-                self.speedx = (0)
-                self.speedy = (v)
-                colide = pygame.sprite.spritecollide(self, self.carros, False)
-                #Impede que os objetos se sobreponham
-                while len(colide) > 1:
-                    self.rect.x = ((random.randint((0),(LARGURA-LARGURA_VAN))))
-                    colide = pygame.sprite.spritecollide(self, self.carros, False)
+            super().update(LARGURA_VERDE,-700)
+
+
+    class Carro_rosa(Figurantes):
+        def __init__(self):
+            super().__init__(carro_rosa_img,250,-700,0,5.5,carros)
             
-    class Polícia(pygame.sprite.Sprite):
-        def __init__(self, img,carros):
-            # Construtor da classe mãe (Sprite).
-            pygame.sprite.Sprite.__init__(self)
-            self.carros = carros
-
-            self.image = img
-            self.rect = self.image.get_rect()
-            self.rect.x = (360)
-            self.rect.y = (-200)
-            self.speedx = (0)
-            self.speedy = (4.8)
-
         def update(self):
-            # Atualizando a posição do objeto
-            self.rect.x += self.speedx
-            self.rect.y += self.speedy
-            # Se o objeto passa do final da tela, sua nova posição em x é sorteada aleatoriamente 
-            if self.rect.top > ALTURA:
-                self.rect.x = (random.randint((0),(LARGURA-LARGURA_POLÍCIA)))
-                self.rect.y = (-400)
-                self.speedx = (0)
-                self.speedy = (v)
-                colide = pygame.sprite.spritecollide(self, self.carros, False)
-                #Impede que os objetos se sobreponham
-                while len(colide) > 1:
-                    self.rect.x = (random.randint((0),(LARGURA-LARGURA_POLÍCIA)))
-                    colide = pygame.sprite.spritecollide(self, self.carros, False)
+            super().update(LARGURA_ROSA,-500)
+
+    class Van(Figurantes):
+        def __init__(self):
+            super().__init__(van_img,330,-700,0,6.2,carros)
             
-    class Caminhão(pygame.sprite.Sprite):
-        def __init__(self, img,carros):
-            # Construtor da classe mãe (Sprite).
-            pygame.sprite.Sprite.__init__(self)
-            self.carros = carros
-
-            self.image = img
-            self.rect = self.image.get_rect()
-            self.rect.x = (-200)
-            self.rect.y = (-400)
-            self.speedx = (0)
-            self.speedy = (6.9)
-
         def update(self):
-            #  Atualizando a posição do objeto
-            self.rect.x += self.speedx
-            self.rect.y += self.speedy
-            # Se o objeto passa do final da tela, sua nova posição em x é sorteada aleatoriamente 
-            if self.rect.top > ALTURA:
-                self.rect.x = (random.randint((0),(LARGURA-LARGURA_CAMINHÃO)))
-                self.rect.y = (-400)
-                self.speedx = (0)
-                self.speedy = (v)
-                colide = pygame.sprite.spritecollide(self, self.carros, False)
-                #Impede que os objetos se sobreponham
-                while len(colide) > 1:
-                    self.rect.x = ((random.randint((0),(LARGURA-LARGURA_CAMINHÃO))))
-                    colide = pygame.sprite.spritecollide(self, self.carros, False)
+            super().update(LARGURA_VAN,-700)
+            
+    class Polícia(Figurantes):
+        def __init__(self):
+            super().__init__(polícia_img,360,-200,0,4.8,carros)
+            
+        def update(self):
+            super().update(LARGURA_POLÍCIA,-400)
 
+    class Caminhão(Figurantes):
+        def __init__(self):
+            super().__init__(caminhão_img,250,-700,0,5.5,carros)
+            
+        def update(self):
+            super().update(LARGURA_CAMINHÃO,-500)
     #carrega as classes       
-    jogadô = Carro(carro_img)
+    jogadô = Carro()
     clock = pygame.time.Clock()
     FPS = 60
     all_sprites = pygame.sprite.Group()
     carros = pygame.sprite.Group()
 
     for i in range(1):
-        taxi = Taxi(taxi_img,carros)
-        carro_verde = Carro_verde(verde_img,carros)
-        carro_rosa = Carro_rosa(carro_rosa_img,carros)
-        van = Van(van_img,carros)
-        polícia = Polícia(polícia_img,carros)
-        caminhão = Caminhão(caminhão_img,carros)
+        taxi = Taxi()
+        carro_verde = Carro_verde()
+        carro_rosa = Carro_rosa()
+        van = Van()
+        polícia = Polícia()
+        caminhão = Caminhão()
         all_sprites.add(jogadô,carro_verde,taxi)
         carros.add(taxi,carro_verde,caminhão,carro_rosa,polícia,van)
     #toca a música em loop
