@@ -36,19 +36,19 @@ pygame.display.set_caption('Rápidos e muito bravos')
 
 start = True
 #cria tela inicial
-imagem = pygame.image.load('assets/Images/tela_inicio.png').convert()
+imagem = pygame.image.load('Projeto_Final_DesSoft\Projeto_Final_DesSoft/assets/Images/tela_inicio.png').convert()
 imagem = pygame.transform.scale(imagem, (LARGURA, ALTURA))
 
 #coloca música de intro
-intro = pygame.mixer.Sound('assets/sounds/musica_inicio.mp3')
+intro = pygame.mixer.Sound('Projeto_Final_DesSoft\Projeto_Final_DesSoft/assets/sounds/musica_inicio.mp3')
 intro.set_volume(0.5)
 intro.play()
 
 #Definindo fontes
-Pontuação = pygame.font.Font('assets/Fonte/PressStart2P.ttf', 28)
-aviso = pygame.font.Font('assets/Fonte/PressStart2P.ttf', 18)
-instruções = pygame.font.Font('assets/Fonte/PressStart2P.ttf', 20)
-instruções2 = pygame.font.Font('assets/Fonte/PressStart2P.ttf', 15)
+Pontuação = pygame.font.Font('Projeto_Final_DesSoft\Projeto_Final_DesSoft/assets/Fonte/PressStart2P.ttf', 28)
+aviso = pygame.font.Font('Projeto_Final_DesSoft\Projeto_Final_DesSoft/assets/Fonte/PressStart2P.ttf', 18)
+instruções = pygame.font.Font('Projeto_Final_DesSoft\Projeto_Final_DesSoft/assets/Fonte/PressStart2P.ttf', 20)
+instruções2 = pygame.font.Font('Projeto_Final_DesSoft\Projeto_Final_DesSoft/assets/Fonte/PressStart2P.ttf', 15)
 
 #programação da tela de início
 while start:
@@ -140,68 +140,68 @@ while GAME:
     v = 4
 
     #carrega sons
-    pygame.mixer.music.load('assets/sounds/transito.mp3')
+    pygame.mixer.music.load('Projeto_Final_DesSoft\Projeto_Final_DesSoft/assets/sounds/transito.mp3')
     pygame.mixer.music.set_volume(0.6)
-    pygame.mixer.music.load('assets/sounds/drift.mp3')
+    pygame.mixer.music.load('Projeto_Final_DesSoft\Projeto_Final_DesSoft/assets/sounds/drift.mp3')
     pygame.mixer.music.set_volume(0.6)
 
-    batida_sound = pygame.mixer.Sound('assets/sounds/batida.mp3')
+    batida_sound = pygame.mixer.Sound('Projeto_Final_DesSoft\Projeto_Final_DesSoft/assets/sounds/batida.mp3')
 
     jogo = True
 
     #cria objetos do jogo
-    carro_img = pygame.image.load('assets/Images/carro mustang.png')
+    carro_img = pygame.image.load('Projeto_Final_DesSoft\Projeto_Final_DesSoft/assets/Images/carro mustang.png')
     carro_img = pygame.transform.scale(carro_img, (LARGURA_CARRO,ALTURA_CARRO))
 
-    van_img = pygame.image.load('assets/Images/van.png')
+    van_img = pygame.image.load('Projeto_Final_DesSoft\Projeto_Final_DesSoft/assets/Images/van.png')
     van_img = pygame.transform.scale(van_img, (LARGURA_VAN,ALTURA_VAN))
 
-    carro_rosa_img = pygame.image.load('assets/Images/carro_rosa.png')
+    carro_rosa_img = pygame.image.load('Projeto_Final_DesSoft\Projeto_Final_DesSoft/assets/Images/carro_rosa.png')
     carro_rosa_img = pygame.transform.scale(carro_rosa_img, (LARGURA_ROSA,ALTURA_ROSA))
 
-    polícia_img = pygame.image.load('assets/Images/polícia.png')
+    polícia_img = pygame.image.load('Projeto_Final_DesSoft\Projeto_Final_DesSoft/assets/Images/polícia.png')
     polícia_img = pygame.transform.scale(polícia_img, (LARGURA_POLÍCIA,ALTURA_POLÍCIA))
 
-    caminhão_img = pygame.image.load('assets/Images/caminhão.png')
+    caminhão_img = pygame.image.load('Projeto_Final_DesSoft\Projeto_Final_DesSoft/assets/Images/caminhão.png')
     caminhão_img = pygame.transform.scale(caminhão_img, (LARGURA_CAMINHÃO,ALTURA_CAMINHÃO))
 
-    picape_img = pygame.image.load('assets/Images/picape2_rotacionada.png')
+    picape_img = pygame.image.load('Projeto_Final_DesSoft\Projeto_Final_DesSoft/assets/Images/picape2_rotacionada.png')
     picape_img = pygame.transform.scale(picape_img, (LARGURA_PICAPE,ALTURA_PICAPE))
 
-    taxi_img = pygame.image.load('assets/Images/taxi_rotacionado.png')
+    taxi_img = pygame.image.load('Projeto_Final_DesSoft\Projeto_Final_DesSoft/assets/Images/taxi_rotacionado.png')
     taxi_img = pygame.transform.scale(taxi_img, (LARGURA_TAXI,ALTURA_TAXI))
 
-    verde_img = pygame.image.load('assets/Images/carro verde2_rotacionada.png')
+    verde_img = pygame.image.load('Projeto_Final_DesSoft\Projeto_Final_DesSoft/assets/Images/carro verde2_rotacionada.png')
     verde_img = pygame.transform.scale(verde_img, (LARGURA_VERDE,ALTURA_VERDE))
 
-    rua_img = pygame.image.load('assets/Images/rua2.png').convert()
+    rua_img = pygame.image.load('Projeto_Final_DesSoft\Projeto_Final_DesSoft/assets/Images/rua2.png').convert()
     rua_img = pygame.transform.scale(rua_img, (600, 870))
 
-    rua2_img = pygame.image.load('assets/Images/frame2.png').convert()
+    rua2_img = pygame.image.load('Projeto_Final_DesSoft\Projeto_Final_DesSoft/assets/Images/frame2.png').convert()
     rua2_img = pygame.transform.scale(rua2_img, (600, 870))
 
-    rua3_img = pygame.image.load('assets/Images/frame3.png').convert()
+    rua3_img = pygame.image.load('Projeto_Final_DesSoft\Projeto_Final_DesSoft/assets/Images/frame3.png').convert()
     rua3_img = pygame.transform.scale(rua3_img, (600, 870))
 
-    rua4_img = pygame.image.load('assets/Images/frame4.png').convert()
+    rua4_img = pygame.image.load('Projeto_Final_DesSoft\Projeto_Final_DesSoft/assets/Images/frame4.png').convert()
     rua4_img = pygame.transform.scale(rua4_img, (600, 870))
 
-    rua5_img = pygame.image.load('assets/Images/frame5.png').convert()
+    rua5_img = pygame.image.load('Projeto_Final_DesSoft\Projeto_Final_DesSoft/assets/Images/frame5.png').convert()
     rua5_img = pygame.transform.scale(rua5_img, (600, 870))
 
-    rua6_img = pygame.image.load('assets/Images/frame6.png').convert()
+    rua6_img = pygame.image.load('Projeto_Final_DesSoft\Projeto_Final_DesSoft/assets/Images/frame6.png').convert()
     rua6_img = pygame.transform.scale(rua6_img, (600, 870))
 
-    rua7_img = pygame.image.load('assets/Images/frame7.png').convert()
+    rua7_img = pygame.image.load('Projeto_Final_DesSoft\Projeto_Final_DesSoft/assets/Images/frame7.png').convert()
     rua7_img = pygame.transform.scale(rua7_img, (600, 870))
 
-    rua8_img = pygame.image.load('assets/Images/frame8.png').convert()
+    rua8_img = pygame.image.load('Projeto_Final_DesSoft\Projeto_Final_DesSoft/assets/Images/frame8.png').convert()
     rua8_img = pygame.transform.scale(rua8_img, (600, 870))
 
-    rua9_img = pygame.image.load('assets/Images/frame9.png').convert()
+    rua9_img = pygame.image.load('Projeto_Final_DesSoft\Projeto_Final_DesSoft/assets/Images/frame9.png').convert()
     rua9_img = pygame.transform.scale(rua9_img, (600, 870))
 
-    rua10_img = pygame.image.load('assets/Images/frame10.png').convert()
+    rua10_img = pygame.image.load('Projeto_Final_DesSoft\Projeto_Final_DesSoft/assets/Images/frame10.png').convert()
     rua10_img = pygame.transform.scale(rua10_img, (600, 870))
 
     #lista de ruas para animação do fundo
@@ -609,7 +609,7 @@ while GAME:
         hits = pygame.sprite.spritecollide(jogadô, carros, True)
         #caso haja colisão, termina o jogo e atualiza para a tela final
         if len(hits)>0:
-            tela_final = pygame.image.load('assets/Images/tela_final.png').convert()
+            tela_final = pygame.image.load('Projeto_Final_DesSoft\Projeto_Final_DesSoft/assets/Images/tela_final.png').convert()
             #toca o som de batida com a colisão
             batida_sound.play()
             pygame.mixer.music.set_volume(0.1)
